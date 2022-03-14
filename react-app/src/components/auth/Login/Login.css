@@ -1,0 +1,54 @@
+.img-form-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.iphones {
+    z-index: 0;
+}
+
+.iphone-img {
+    max-height: 540px;
+    z-index: 1;
+    position: absolute;
+    left: 683px;
+    top: 150px;
+}
+
+.form-container {
+    border: 1px solid rgba(var(--b6a,219,219,219),1);
+    height: 600px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.instaclone-logo {
+    font-family: 'Brush Script MT';
+    text-align: center;
+    font-size: 50px;
+}
+
+.password-input, .email-input {
+    margin-top: 10px;
+    padding: 9px 0 7px 8px;
+    background: rgba(var(--b3f,250,250,250),1);
+    border: 1px solid rgba(var(--b6a,219,219,219),1);
+    width: 300px
+}
+
+.password-input::placeholder{
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+
+.login-button {
+    width: 310px;
+    margin-top: 10px;
+    padding: 9px 0 7px 8px;
+    background-color: rgba(var(--d69,0,149,246),1);
+    color: white;
+    border: 1px solid transparent;
+    border-radius: 5px;
+}
