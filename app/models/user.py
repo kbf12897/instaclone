@@ -1,7 +1,7 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-
+from .follows_table import follows
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -9,7 +9,18 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
+    profile_img = db.Column(db.String(255), nullable=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+
+    # many to many users to users
+    followers = db.relationship(
+        "User",
+        secondary=follows,
+        primaryjoin=(follows.c.follower_id == id),
+        secondaryjoin=(follows.c.followed_id == id),
+        backref=db.backref('following', lazy='dynamic'),
+        lazy='dynamic'
+    )
 
     @property
     def password(self):
@@ -26,5 +37,8 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'profile_img': self.profile_img,
+            'email': self.email,
+            'follows': self.user.following,
+            'followers': self.user.followers
         }
