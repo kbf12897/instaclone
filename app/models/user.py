@@ -2,6 +2,7 @@ from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from .follows_table import follows
+from .post_model import Post
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -22,6 +23,12 @@ class User(db.Model, UserMixin):
         lazy='dynamic'
     )
 
+    # one to many with posts, comments, likes
+    posts = db.relationship('Post', back_populates='users')
+    comments = db.relationship('Comment', back_populates='users')
+    likes = db.relationship('Like', back_populates='users')
+
+
     @property
     def password(self):
         return self.hashed_password
@@ -32,6 +39,26 @@ class User(db.Model, UserMixin):
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
+
+    def is_following(self, user):
+        return self.followers.filter(follows.c.followed_id == user.id).count() > 0
+
+    def follow(self, user):
+        if not self.is_following(user):
+            self.followers.append(user)
+
+    def unfollow(self, user):
+        if self.is_following(user):
+            self.followers.remove(user)
+
+    def followed_posts(self):
+        followed = Post.query.join(
+            follows, (follows.c.followed_id == Post.user_id)).filter(
+                follows.c.follower_id == self.id)
+
+        own = Post.query.filter_by(user_id=self.id)
+        return followed.union(own).order_by(Post.created_at.desc())
+
 
     def to_dict(self):
         return {

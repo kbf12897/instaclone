@@ -12,9 +12,10 @@ class Post(db.Model):
     updated_at = db.Column(db.Datetime(), nullable=True, default=datetime.now())
 
 
-    # one to many with users, comments
+    # one to many with users, comments, likes
     users = db.relationship('User', back_populates='posts')
     comments = db.relationship('Comment', back_populates='posts', cascade='all, delete')
+    likes = db.relationship('Like', back_populates='posts', cascade='all, delete')
 
     def to_dict(self):
         return {
