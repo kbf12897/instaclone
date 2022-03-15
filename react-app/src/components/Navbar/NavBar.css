@@ -1,0 +1,30 @@
+html {
+    height: 100%;
+    background-color: #fafafa;
+}
+
+.nav-container {
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    width: 100%
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: white;
+    margin: 0px 0px 0px -10px;
+    padding: 10px 20px;
+    width: 100%;
+    list-style: none;
+    border-bottom: 1px solid rgba(var(--b6a,219,219,219),1);;
+}
+
+.home a {
+    text-decoration: none;
+    color: black;
+    font-family: 'Brush Script MT';
+    font-size: 30px;
+}

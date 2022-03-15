@@ -1,0 +1,34 @@
+.homepage-container {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    max-width: 935px;
+}
+
+.posts-users {
+    width: 100%;
+    position: relative;
+    left: 48%;
+}
+
+.user-story-scrollbar {
+    background-color: white;
+    border: 1px solid rgba(var(--b6a,219,219,219),1);
+    margin: 24px 0 24px;
+    padding: 16px 0;
+    border-radius: 3px;
+    width: 600px;
+}
+
+.all-posts {
+    width: 600px;
+    background-color: white;
+    border: 1px solid rgba(var(--b6a,219,219,219),1);
+    height: 800px;
+}
+
+.right-side-user-panel {
+    position: fixed;
+    left: 1162.5px;
+}
