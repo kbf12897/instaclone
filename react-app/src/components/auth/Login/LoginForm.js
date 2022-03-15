@@ -71,7 +71,7 @@ const LoginForm = () => {
             </div>
           </form>
           <div>
-            <p> __________  OR   ____________ </p>
+            <p className='seperator'><span>OR</span></p>
           </div>
         </div>
       </div>

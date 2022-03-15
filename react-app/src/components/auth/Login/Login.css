@@ -52,3 +52,36 @@
     border: 1px solid transparent;
     border-radius: 5px;
 }
+
+.seperator {
+    line-height: 0.5;
+    text-align: center;
+ }
+
+.seperator span {
+    display: inline-block;
+    position: relative;
+    margin-top: 10px;
+    font-size: 15px;
+    color: rgba(var(--f52,142,142,142),1);
+}
+
+.seperator span::before,
+.seperator span:after {
+    content: "";
+    position: absolute;
+    height: 5px;
+    border-bottom: 1px solid rgba(var(--b6a,219,219,219),1);
+    top: 0;
+    width: 130px;
+}
+
+.seperator span:before {
+  right: 100%;
+  margin-right: 15px;
+}
+
+.seperator span:after {
+  left: 100%;
+  margin-left: 15px;
+}
