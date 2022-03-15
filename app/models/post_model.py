@@ -8,8 +8,8 @@ class Post(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     img_url = db.Column(db.String(255), nullable=False)
     caption = db.Column(db.String(255), nullable=True)
-    created_at = db.Column(db.Datetime(), nullable=False, default=datetime.now())
-    updated_at = db.Column(db.Datetime(), nullable=True, default=datetime.now())
+    created_at = db.Column(db.DateTime(), nullable=False, default=datetime.now())
+    updated_at = db.Column(db.DateTime(), nullable=True, default=datetime.now())
 
 
     # one to many with users, comments, likes
