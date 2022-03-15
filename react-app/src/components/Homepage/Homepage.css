@@ -3,13 +3,12 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    max-width: 935px;
+    max-width: 1505px;
 }
 
 .posts-users {
-    width: 100%;
-    position: relative;
-    left: 48%;
+   position: relative;
+   float: left;
 }
 
 .user-story-scrollbar {
@@ -30,5 +29,5 @@
 
 .right-side-user-panel {
     position: fixed;
-    left: 1162.5px;
+    left: 1100px;
 }
