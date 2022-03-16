@@ -59,11 +59,55 @@ html {
     background-color: white;
     top: 55px;
     border: 1px solid rgba(var(--b6a,219,219,219),1);
+    border-radius: 3px;
     width: 200px;
-    height: 150px;
+    height: 75px;
     display: flex;
     flex-direction: column;
     align-items: left;
     padding: 0;
     margin-right: 20px;
+}
+
+.profile-page-button, .profile-logout-button {
+    padding: 8px 16px;
+}
+
+.profile-page-button {
+    border-bottom: 1px solid rgba(var(--b6a,219,219,219),1);
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-dropdown a {
+    text-decoration: none;
+}
+
+.profile-dropdown a:hover {
+    background-color: #fafafa;
+}
+
+.profile-link-button {
+    color: black;
+    margin-left: 5px;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size: 15px;
+    width: 100%;
+}
+
+.profile-logout-button {
+    padding: 0;
+}
+
+.profile-logout-button button {
+    background-color: white;
+    border: none;
+    font-size: 15px;
+    width: 100%;
+    cursor: pointer;
+    padding: 10px 0;
+}
+
+.profile-logout-button button:hover {
+    background-color: #fafafa;
 }
