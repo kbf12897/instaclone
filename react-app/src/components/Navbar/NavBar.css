@@ -28,3 +28,9 @@ html {
     font-family: 'Brush Script MT';
     font-size: 30px;
 }
+
+.navbar-right-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
