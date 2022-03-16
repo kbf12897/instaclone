@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask_login import login_required
 import psycopg2
-from app.models import Post, Comment, User, db
+from app.models import Post, db
 from app.forms.post_form import PostForm
 from datetime import datetime
 
