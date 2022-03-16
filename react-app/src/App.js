@@ -12,6 +12,11 @@ import { authenticate } from './store/session';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+  console.log('HREF', window?.location?.href.includes('login'))
+
+  let navbar;
+  if (window?.location?.href.includes('login') || window?.location?.href.includes('sign-up')) navbar = null;
+  else navbar = <NavBar />;
 
   useEffect(() => {
     (async() => {
@@ -26,7 +31,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+      {navbar}
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
