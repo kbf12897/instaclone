@@ -32,23 +32,26 @@ const PostForm = ({ closeModal }) => {
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input
-                    className='image-input'
-                    type='text'
-                    placeholder='Imgage URL'
-                    onChange={(e) => setImg_url(e.target.value)}
-                    required
-                />
-                <input
-                    className='caption-input'
-                    type='text'
-                    placeholder='Caption'
-                    onChange={(e) => setCaption(e.target.value)}
-                />
-                <button className='add-post-button' type='submit'>Upload</button>
-            </form>
+        <div className='create-post-form'>
+            <div className='form-name'><h2>Create Post</h2></div>
+            <div className='post-form-container'>
+                <form className='new-post-form' onSubmit={handleSubmit}>
+                    <input
+                        className='image-input'
+                        type='text'
+                        placeholder='Imgage URL'
+                        onChange={(e) => setImg_url(e.target.value)}
+                        required
+                    />
+                    <input
+                        className='caption-input'
+                        type='text'
+                        placeholder='Caption'
+                        onChange={(e) => setCaption(e.target.value)}
+                    />
+                    <button className='add-post-button' type='submit'>Upload</button>
+                </form>
+            </div>
         </div>
     );
 }
