@@ -52,6 +52,7 @@ html {
     border-radius: 50%;
     height: 24px;
     width: 24px;
+    cursor: pointer;
 }
 
 .profile-dropdown {

@@ -43,4 +43,9 @@
     border: 1px solid transparent;
     border-radius: 5px;
     font-size: 15px;
+    cursor: pointer;
+}
+
+.post-form-modal-button {
+    cursor: pointer;
 }
