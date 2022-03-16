@@ -31,7 +31,7 @@ def get_one_post(postId):
 # _______________________________________CREATE NEW POST___________________________________________
 
 @post_routes.route('/new', methods=['POST'])
-@login_required
+# @login_required
 def new_post():
     form = PostForm()
     form['csrf_token'].data = request.cookies['csrf_token']

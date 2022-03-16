@@ -59,7 +59,7 @@ export const getPost = (postId) => async (dispatch) => {
 };
 
 export const createPost = (payload) => async (dispatch) => {
-    const response = await fetch(`/api/posts/new`, {
+    const response = await fetch('/api/posts/new', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -80,7 +80,6 @@ export const updatePost = (payload) => async (dispatch) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
     });
-    console.log('HEELLLLLOOOOO')
 
     if (response.ok) {
         const updatedPost = await response.json();
@@ -117,7 +116,7 @@ const postReducer = (state = {}, action) => {
             return newState;
         }
         case CREATE: {
-            newState = state;
+            newState = {...state};
             newState[action.post.id] = action.post;
             return newState;
         }
