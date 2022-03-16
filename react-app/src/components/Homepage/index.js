@@ -9,6 +9,8 @@ const Homepage = () => {
     const postsObj = useSelector((state) => state?.postReducer);
     const posts = postsObj && Object.values(postsObj);
 
+    console.log('AHHHHHH', posts)
+
     useEffect(() => {
         dispatch(getPosts());
     }, [dispatch])
@@ -23,7 +25,10 @@ const Homepage = () => {
                 <div className='all-posts'>
                     {posts?.map((post) => (
                         <div key={post.id} className='post-container'>
-                            <div className='post-user'>post user placeholder</div>
+                            <div className='post-user-container'>
+                                <div className='post-profile-img-container'><img className='post-profile-img' src={post?.post_owner_profile_img} alt='profile-img' /></div>
+                                <div className='post-user'>{post?.post_owner}</div>
+                            </div>
                             <div className='img-container'>
                                 <img className='post-img' src={post?.img_url} alt={post?.caption} />
                             </div>

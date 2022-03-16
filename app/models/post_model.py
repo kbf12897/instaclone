@@ -25,5 +25,6 @@ class Post(db.Model):
             'caption': self.caption,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
-            'post_owner': self.users.username
+            'post_owner': self.users.username,
+            'post_owner_profile_img': self.users.profile_img,
         }
