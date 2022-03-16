@@ -35,7 +35,7 @@ const destroy = (postId) => ({
 //——————————————————————————————————————————————————————————————————————————————————
 
 export const getPosts = () => async (dispatch) => {
-    const response = await fetch('/api/posts', { method: 'GET' });
+    const response = await fetch('/api/posts/', { method: 'GET' });
 
     if (response.ok) {
         const posts = await response.json();
@@ -103,29 +103,30 @@ export const deletePost = (postId) => async (dispatch) => {
 //———————————————————————————————————REDUCER——————————————————————————————————————————
 
 const postReducer = (state = {}, action) => {
+    let newState;
     switch(action.type) {
         case LOAD: {
-            const newState = state;
-            newState[action.post.id] = action.post;
+            newState = {...state};
+            action.posts['all_posts'].forEach((post) => newState[post.id] = post);
             return newState;
         };
         case LOAD_ONE: {
-            const newState = state;
+            newState = state;
             newState[action.post.id] = action.post;
             return newState;
         };
         case CREATE: {
-            const newState = state;
+            newState = state;
             newState[action.post.id] = action.post;
             return newState;
         };
         case EDIT: {
-            const newState = state;
+            newState = state;
             newState[action.post.id] = action.post;
             return newState;
         };
         case DELETE: {
-            const newState = state;
+            newState = state;
             newState[action.post.id] = action.post;
             return newState;
         }
