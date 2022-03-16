@@ -1,13 +1,13 @@
 import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createPost, updatePost } from '../../store/posts';
+import { createPost } from '../../store/posts';
 import './Post.css';
 
 const PostForm = ({ closeModal }) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const [ error, setErrors ] = useState([]);
+    // const [ error, setErrors ] = useState([]);
 
     const user_id = useSelector((state) => state?.session?.user?.id);
 

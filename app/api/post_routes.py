@@ -13,7 +13,7 @@ post_routes = Blueprint('posts', __name__)
 @post_routes.route('/', methods=['GET'])
 @login_required
 def get_all_posts():
-    all_posts = Post.query.all()
+    all_posts = Post.query.order_by(Post.created_at.desc()).all()
 
     return {'all_posts': [post.to_dict() for post in all_posts]}
 
@@ -48,7 +48,7 @@ def new_post():
         db.session.add(new_post)
         db.session.commit()
 
-        return { 'post': new_post.to_dict() }
+        return {**new_post.to_dict()}
 
 
     return form.errors

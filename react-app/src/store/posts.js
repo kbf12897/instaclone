@@ -80,6 +80,7 @@ export const updatePost = (payload) => async (dispatch) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
     });
+    console.log('HEELLLLLOOOOO')
 
     if (response.ok) {
         const updatedPost = await response.json();
@@ -109,22 +110,22 @@ const postReducer = (state = {}, action) => {
             newState = {...state};
             action.posts['all_posts'].forEach((post) => newState[post.id] = post);
             return newState;
-        };
+        }
         case LOAD_ONE: {
             newState = state;
             newState[action.post.id] = action.post;
             return newState;
-        };
+        }
         case CREATE: {
             newState = state;
             newState[action.post.id] = action.post;
             return newState;
-        };
+        }
         case EDIT: {
             newState = state;
             newState[action.post.id] = action.post;
             return newState;
-        };
+        }
         case DELETE: {
             newState = state;
             newState[action.post.id] = action.post;
