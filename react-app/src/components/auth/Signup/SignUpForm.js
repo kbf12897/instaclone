@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect, NavLink, useHistory } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 import { signUp, login } from '../../../store/session';
 import './Signup.css'
 
 const SignUpForm = () => {
-  const history = useHistory();
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
