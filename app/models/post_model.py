@@ -6,7 +6,7 @@ class Post(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    img_url = db.Column(db.String(255), nullable=False)
+    img_url = db.Column(db.String(1000), nullable=False)
     caption = db.Column(db.String(255), nullable=True)
     created_at = db.Column(db.DateTime(), nullable=False, default=datetime.now())
     updated_at = db.Column(db.DateTime(), nullable=True, default=datetime.now())

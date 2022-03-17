@@ -121,7 +121,7 @@ const postReducer = (state = {}, action) => {
             return newState;
         }
         case EDIT: {
-            newState = state;
+            newState = {...state};
             newState[action.post.id] = action.post;
             return newState;
         }

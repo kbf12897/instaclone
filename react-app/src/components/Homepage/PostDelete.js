@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import { deletePost } from '../../store/posts';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import './PostDelete.css';
 
 const PostDeleteModal = ({ post }) => {
