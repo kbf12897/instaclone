@@ -29,7 +29,7 @@ const Homepage = () => {
                                     <img className='post-profile-img' src={post?.post_owner_profile_img} alt='profile-img' />
                                     <div className='post-user'>{post?.post_owner}</div>
                                 </div>
-                                <PostDeleteModal postId={post?.id}/>
+                                <PostDeleteModal post={post}/>
                             </div>
                             <div className='img-container'>
                                 <img className='post-img' src={post?.img_url} alt={post?.caption} />
