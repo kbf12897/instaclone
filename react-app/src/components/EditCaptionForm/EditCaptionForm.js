@@ -1,16 +1,15 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { updatePost } from '../../store/posts';
+import './EditCaption.css';
 
 
 const EditCaptionForm = ({ setShowEdit, post }) => {
     const dispatch = useDispatch();
-    const [caption, setCaption] = useState(post.caption)
+    const [caption, setCaption] = useState(post?.caption)
     const postId = post?.id;
-    const img_url = post.img_url;
-    const user_id = post.user_id;
-
-    console.log('AHHHHHHH', postId, caption)
+    const img_url = post?.img_url;
+    const user_id = post?.user_id;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -28,7 +27,7 @@ const EditCaptionForm = ({ setShowEdit, post }) => {
                     value={caption}
                     onChange={(e) => setCaption(e.target.value)}
                 />
-                <button type='submit'>Edit</button>
+                <button className='submit-caption-edit' type='submit'>Edit</button>
             </form>
         </div>
     );

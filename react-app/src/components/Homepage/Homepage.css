@@ -92,6 +92,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     width: 100%;
     padding-left: 20px;
 }
@@ -107,4 +108,14 @@
     font-family: sans-serif;
     font-size: 15px;
     font-weight: 600;
+}
+
+.caption-and-owner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.caption-three-dots {
+    margin-right: 30px;
 }
