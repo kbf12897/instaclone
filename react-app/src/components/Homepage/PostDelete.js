@@ -24,8 +24,8 @@ const PostDeleteModal = ({ post }) => {
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <div className='delete-post-container'>
-                        <div>User page placeholder</div>
                         {sessionUser.id === Number(post?.user_id) && <div className='delete-post-button' onClick={() => handleDelete(post?.id)}>Delete</div>}
+                        <div className='user-page-link'>User page placeholder</div>
                         <div className='cancel-delete-button' onClick={() => setShowModal(false)}>Cancel</div>
                     </div>
                 </Modal>
