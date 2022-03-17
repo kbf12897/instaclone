@@ -25,7 +25,6 @@ const LoginForm = () => {
   const handleDemo = (demo) => {
     const { email, password } = demo
     dispatch(login(email, password));
-    history.push('/');
   }
 
   const updateEmail = (e) => {

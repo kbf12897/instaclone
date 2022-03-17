@@ -29,7 +29,6 @@ const SignUpForm = () => {
   const handleDemo = async (demo) => {
     const { email, password } = demo;
     dispatch(login(email, password));
-    history.push('/');
   }
 
   const updateUsername = (e) => {
