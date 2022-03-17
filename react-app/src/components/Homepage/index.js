@@ -12,11 +12,17 @@ const Homepage = () => {
     const sessionUser = useSelector((state) => state.session.user)
     const posts = postsObj && Object.values(postsObj);
     const [showEdit, setShowEdit] = useState(false)
+    const [postId, setPostId] = useState()
 
     useEffect(() => {
         dispatch(getPosts());
     }, [dispatch])
 
+
+    const setEditPost = (postId, bool) => {
+        setShowEdit(bool);
+        setPostId(postId)
+    }
 
     return (
         <div className='homepage-container'>
@@ -40,8 +46,8 @@ const Homepage = () => {
                             <div className='post-caption-container'>
                                 {post.caption && <div className='caption-post-creator'>{post?.post_owner}</div>}
                                 {!showEdit && <div className='post-caption'>{post?.caption}</div>}
-                                {showEdit && <EditCaptionForm post={post} setShowEdit={setShowEdit}/>}
-                                {sessionUser.id === Number(post?.id) && <div className='caption-three-dots' onClick={() => setShowEdit(true)}><svg aria-label="More options" className="_8-yf5 " color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg></div>}
+                                {(showEdit && post?.id === postId) && <EditCaptionForm post={post} setShowEdit={setShowEdit}/>}
+                                {sessionUser.id === Number(post?.id) && <div className='caption-three-dots' onClick={() => setEditPost(post?.id, true)}><svg aria-label="More options" className="_8-yf5 " color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg></div>}
                             </div>
                         </div>
                     ))}

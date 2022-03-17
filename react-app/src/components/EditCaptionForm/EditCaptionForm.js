@@ -7,14 +7,16 @@ const EditCaptionForm = ({ setShowEdit, post }) => {
     const dispatch = useDispatch();
     const [caption, setCaption] = useState(post.caption)
     const postId = post?.id;
+    const img_url = post.img_url;
+    const user_id = post.user_id;
 
-    console.log('AHHHHHHH', postId)
+    console.log('AHHHHHHH', postId, caption)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         setShowEdit(false)
-        return await dispatch(updatePost({ postId, caption }))
+        return await dispatch(updatePost({ postId, user_id, img_url, caption }))
     }
 
     return (

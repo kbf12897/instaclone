@@ -75,7 +75,8 @@ export const createPost = (payload) => async (dispatch) => {
 };
 
 export const updatePost = (payload) => async (dispatch) => {
-    const response = await fetch(`/api/posts/${payload.id}`, {
+    console.log('PAAAAYLLLLLOAD', payload)
+    const response = await fetch(`/api/posts/${payload.postId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
