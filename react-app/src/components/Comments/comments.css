@@ -1,0 +1,23 @@
+.comments-container {
+    width: 100%;
+}
+
+.comment-body-owner {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 0 10px 20px 10px;
+}
+
+.comment-owner {
+    font-family: sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.comment-content {
+    font-family: sans-serif;
+    font-size: 13px;
+    margin-left: 5px;
+    margin-top: 2px;
+}

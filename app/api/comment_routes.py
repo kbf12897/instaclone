@@ -28,7 +28,7 @@ def new_comment():
         new_comment = Comment(
             user_id = form.data['user_id'],
             post_id = form.data['post_id'],
-            commentBody = form.data['commentBody']
+            comment_body = form.data['comment_body']
         )
 
         db.session.add(new_comment)
@@ -49,7 +49,7 @@ def update_comment(postId):
         comment = Comment.query.get(postId)
         comment.user_id = form.data['user_id']
         comment.post_id = form.data['post_id']
-        comment.commentBody = form.data['commentBody']
+        comment.comment_body = form.data['comment_body']
 
         db.session.commit()
         return { **comment.to_dict() }

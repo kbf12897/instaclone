@@ -47,7 +47,7 @@ export const createComment = (payload) => async (dispatch) => {
     })
 
     if (response.ok) {
-        newComment = await response.json();
+        const newComment = await response.json();
         dispatch(create(newComment));
         return newComment;
     }
