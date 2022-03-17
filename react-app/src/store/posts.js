@@ -4,7 +4,7 @@ const CREATE = '/posts/new';
 const EDIT = '/posts/edit';
 const DELETE = '/posts/delete';
 
-//——————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————ACTIONS————————————————————————————————————————————————
 
 const load = (posts) => ({
     type: LOAD,
@@ -32,7 +32,7 @@ const destroy = (postId) => ({
 });
 
 
-//——————————————————————————————————————————————————————————————————————————————————
+//———————————————————————————————————THUNKS———————————————————————————————————————————————
 
 export const getPosts = () => async (dispatch) => {
     const response = await fetch('/api/posts/', { method: 'GET' });
