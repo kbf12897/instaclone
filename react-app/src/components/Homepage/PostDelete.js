@@ -3,6 +3,7 @@ import { Modal } from '../../context/Modal';
 import { deletePost } from '../../store/posts';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import './PostDelete.css';
 
 const PostDeleteModal = ({ post }) => {
     const dispatch = useDispatch();
@@ -24,7 +25,7 @@ const PostDeleteModal = ({ post }) => {
                 <Modal onClose={() => setShowModal(false)}>
                     <div className='delete-post-container'>
                         <div>User page placeholder</div>
-                        {sessionUser === post?.user_id && <div className='delete-post-button' onClick={() => handleDelete(post?.id)}>Delete</div>}
+                        {sessionUser.id === Number(post?.user_id) && <div className='delete-post-button' onClick={() => handleDelete(post?.id)}>Delete</div>}
                         <div className='cancel-delete-button' onClick={() => setShowModal(false)}>Cancel</div>
                     </div>
                 </Modal>
