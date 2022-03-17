@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect, NavLink } from 'react-router-dom';
+import { Redirect, NavLink, useHistory } from 'react-router-dom';
 import { login } from '../../../store/session';
 import './Login.css'
 
 const LoginForm = () => {
+  const history = useHistory();
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+
+  const demoUser = { email: 'demo@aa.io', password: 'password' };
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -18,6 +21,12 @@ const LoginForm = () => {
       setErrors(data);
     }
   };
+
+  const handleDemo = (demo) => {
+    const { email, password } = demo
+    dispatch(login(email, password));
+    history.push('/');
+  }
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
@@ -76,7 +85,7 @@ const LoginForm = () => {
             </div>
             <div className='demo-button'>
               <div className='demo-sentence'>Explore without an account</div>
-              <button className='demo'>Demo</button>
+              <button className='demo' onClick={() => handleDemo(demoUser)}>Demo</button>
             </div>
           <div className='sign-up-link'>
               Don't have an account? <NavLink to='/sign-up'>Sign up</NavLink>

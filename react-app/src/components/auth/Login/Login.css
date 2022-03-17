@@ -61,6 +61,7 @@ html {
     border: 1px solid transparent;
     border-radius: 5px;
     font-size: 15px;
+    cursor: pointer;
 }
 
 .seperator {
@@ -132,4 +133,5 @@ html {
     border: 1px solid transparent;
     border-radius: 5px;
     font-size: 15px;
+    cursor: pointer;
 }

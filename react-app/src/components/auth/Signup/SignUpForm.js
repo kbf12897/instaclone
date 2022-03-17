@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect, NavLink } from 'react-router-dom';
-import { signUp } from '../../../store/session';
+import { Redirect, NavLink, useHistory } from 'react-router-dom';
+import { signUp, login } from '../../../store/session';
 import './Signup.css'
 
 const SignUpForm = () => {
+  const history = useHistory();
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -12,6 +13,8 @@ const SignUpForm = () => {
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+
+  const demoUser = { email: 'demo@aa.io', password: 'password' };
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -22,6 +25,12 @@ const SignUpForm = () => {
       }
     }
   };
+
+  const handleDemo = async (demo) => {
+    const { email, password } = demo;
+    dispatch(login(email, password));
+    history.push('/');
+  }
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -49,7 +58,7 @@ const SignUpForm = () => {
         <h1 className='signup-instaclone-logo'>Instaclone</h1>
         <p className='signup-sentence'>Sign up to see photos from your friends.</p>
         <div className='demo-button'>
-          <button className='demo-signup'>Login as a Demo user</button>
+          <button className='demo-signup' onClick={() => handleDemo(demoUser)}>Login as a Demo user</button>
         </div>
         <div>
           <p className='seperator'><span>OR</span></p>

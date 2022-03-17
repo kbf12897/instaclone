@@ -13,7 +13,7 @@ post_routes = Blueprint('posts', __name__)
 @post_routes.route('/', methods=['GET'])
 @login_required
 def get_all_posts():
-    all_posts = Post.query.order_by(Post.created_at.desc()).all()
+    all_posts = Post.query.order_by(Post.user_id).all()
 
     return {'all_posts': [post.to_dict() for post in all_posts]}
 
