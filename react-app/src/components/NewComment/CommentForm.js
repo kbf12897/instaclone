@@ -19,8 +19,8 @@ const CommentForm = ({ post }) => {
             comment_body
         }
 
-        await dispatch(createComment(payload));
         setComment_body('')
+        await dispatch(createComment(payload));
     }
 
 
@@ -32,6 +32,7 @@ const CommentForm = ({ post }) => {
                     className="comment-input"
                     placeholder="Add a comment..."
                     type='text'
+                    value={comment_body}
                     onChange={(e) => setComment_body(e.target.value)}
                 />
                 <button className="comment-submit-button" type="submit">Post</button>

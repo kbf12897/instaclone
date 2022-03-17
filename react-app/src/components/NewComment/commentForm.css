@@ -1,0 +1,31 @@
+.comment-form-container {
+    width: 100%;
+    border-top: 1px solid rgba(var(--b6a,219,219,219),1);
+}
+
+.comment-input {
+    border: none;
+    width: 85%;
+    height: 50px;
+    margin-left: 10px;
+}
+
+.comment-input::placeholder {
+    font-size: 15px;
+    font-family: sans-serif;
+    padding-left: 10px;
+}
+
+.comment-input:focus {
+    outline: none;
+}
+
+.comment-submit-button {
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    color: rgba(var(--d69,0,149,246),1);
+    font-family: sans-serif;
+    font-weight: 545;
+    font-size: 15px;
+}
