@@ -5,16 +5,18 @@ import './EditComment.css';
 
 const EditCommentForm = ({ setShowCommentEdit, setCommentId ,comment }) => {
     const dispatch = useDispatch();
-    const [commentValue, setCommentValue] = useState(comment?.comment_body);
-    const user_id = comment?.user_id;
-    const post_id = comment?.post_id;
+    const [comment_body, setComment_body] = useState(comment?.comment_body);
+    // const user_id = comment?.user_id;
+    // const post_id = comment?.post_id;
+    const commentId = comment?.id;
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         setShowCommentEdit(false);
         setCommentId(-1)
-        return await dispatch(editComment({ user_id, post_id, commentValue }))
+        return await dispatch(editComment({ commentId, comment_body }))
     }
 
     return (
@@ -23,8 +25,8 @@ const EditCommentForm = ({ setShowCommentEdit, setCommentId ,comment }) => {
                 <input
                     className='edit-comment-input'
                     type='text'
-                    value={commentValue}
-                    onChange={(e) => setCommentValue(e.target.value)}
+                    value={comment_body}
+                    onChange={(e) => setComment_body(e.target.value)}
                 />
                 <button className='submit-comment-edit' type='submit'>Edit</button>
             </form>

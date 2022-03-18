@@ -39,16 +39,14 @@ def new_comment():
 
 #——————————————————————————————————UPDATE COMMENT————————————————————————————————————————————————
 
-@comment_routes.route('/<int:postId>', methods=['PUT'])
+@comment_routes.route('/<int:commentId>', methods=['PUT'])
 @login_required
-def update_comment(postId):
+def update_comment(commentId):
     form = CommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        comment = Comment.query.get(postId)
-        comment.user_id = form.data['user_id']
-        comment.post_id = form.data['post_id']
+        comment = Comment.query.get(commentId)
         comment.comment_body = form.data['comment_body']
 
         db.session.commit()

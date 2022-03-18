@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import EditCommentForm from "./EditCommentForm";
+// import EditCommentForm from "./EditCommentForm";
 import "./CommentMenu.css";
 
-function CommentMenu({ comment }) {
+function CommentMenu({ comment, setEditComment, showCommentEdit, setShowCommentEdit }) {
     const [showMenu, setShowMenu] = useState(false);
     const sessionUser = useSelector((state) => state?.session?.user)
-    const [showCommentEdit, setShowCommentEdit] = useState(false);
-    const [commentId, setCommentId] = useState(-1)
+    // const [commentId, setCommentId] = useState(-1)
 
-    const setEditComment = (commentId, bool) => {
-        setShowCommentEdit(bool);
-        setCommentId(commentId)
-    }
+    // const setEditComment = (commentId, bool) => {
+    //     setShowCommentEdit(bool);
+    //     setCommentId(commentId)
+    // }
 
     const openMenu = () => {
         if (showMenu) return;
@@ -41,8 +40,7 @@ function CommentMenu({ comment }) {
                 {showMenu && (
                     <div className="comment-dropdown">
                         <div className="edit-comment-button">
-                            <div>Edit</div>
-                            <EditCommentForm setShowCommentEdit={setShowCommentEdit} setCommentId={setCommentId} comment={comment} />
+                            <div onClick={() => setEditComment(comment?.id, !showCommentEdit)}>Edit</div>
                         </div>
                         <div className="delete-comment-button">
                             <div>Delete</div>
