@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-// import EditCommentForm from "./EditCommentForm";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteComment } from '../../store/comment';
 import "./CommentMenu.css";
 
-function CommentMenu({ comment, setEditComment, showCommentEdit, setShowCommentEdit }) {
+function CommentMenu({ comment, setEditComment, showCommentEdit }) {
     const [showMenu, setShowMenu] = useState(false);
     const sessionUser = useSelector((state) => state?.session?.user)
-    // const [commentId, setCommentId] = useState(-1)
+    const dispatch = useDispatch();
 
-    // const setEditComment = (commentId, bool) => {
-    //     setShowCommentEdit(bool);
-    //     setCommentId(commentId)
-    // }
 
     const openMenu = () => {
         if (showMenu) return;
         setShowMenu(true);
     };
+
+    const handleDelete = async (commentId) => {
+        return await dispatch(deleteComment(commentId))
+    }
 
     useEffect(() => {
         if (!showMenu) return;
@@ -43,7 +43,7 @@ function CommentMenu({ comment, setEditComment, showCommentEdit, setShowCommentE
                             <div onClick={() => setEditComment(comment?.id, !showCommentEdit)}>Edit</div>
                         </div>
                         <div className="delete-comment-button">
-                            <div>Delete</div>
+                            <div className="delete-comment" onClick={() => handleDelete(comment?.id)}>Delete</div>
                         </div>
                     </div>
                 )}

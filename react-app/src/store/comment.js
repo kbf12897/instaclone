@@ -56,7 +56,6 @@ export const createComment = (payload) => async (dispatch) => {
 }
 
 export const editComment = (payload) => async (dispatch) => {
-    console.log('PAYLOAD', payload)
     const response = await fetch(`/api/comments/${payload?.commentId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -97,13 +96,11 @@ const commentReducer = (state = {}, action) => {
             return newState;
         case UPDATE:
             newState = {...state};
-            // console.log('ACTION', action.comment)
-            // console.log('REDUCER', newState[action.comment.id])
             newState[action.comment.id] = action.comment;
             return newState;
         case DELETE:
             newState = {...state};
-            delete newState[action.comment.id];
+            delete newState[action.commentId.id];
             return newState;
         default:
             return state;
