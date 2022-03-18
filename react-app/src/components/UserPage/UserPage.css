@@ -1,0 +1,30 @@
+.user-info-container {
+    height: 200px;
+    width: 900px;
+    display: flex;
+    margin: 0 auto;
+    flex-direction: row;
+    justify-content: flex-start;
+    position: relative;
+    top: 80px;
+    border-bottom: 1px solid rgba(var(--b6a,219,219,219),1);
+}
+
+.user-page-profile-img {
+    height: 150px;
+    width: 150px;
+    margin-right: 100px;
+    margin-left: 50px;
+}
+
+.profile-page-img {
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+}
+
+.username {
+    font-weight: 300;
+    font-size: 30px;
+    font-family: sans-serif;
+}

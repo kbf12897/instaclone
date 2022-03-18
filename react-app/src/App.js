@@ -6,7 +6,7 @@ import SignUpForm from './components/auth/Signup/SignUpForm';
 import NavBar from './components/Navbar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import Homepage from './components/Homepage';
-import User from './components/User';
+import User from './components/UserPage/User';
 import { authenticate } from './store/session';
 
 function App() {
