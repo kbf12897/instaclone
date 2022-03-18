@@ -40,7 +40,7 @@ function CommentMenu({ comment, setEditComment, showCommentEdit }) {
                 {showMenu && (
                     <div className="comment-dropdown">
                         <div className="edit-comment-button">
-                            <div onClick={() => setEditComment(comment?.id, !showCommentEdit)}>Edit</div>
+                            <div className="edit-comment" onClick={() => setEditComment(comment?.id, !showCommentEdit)}>Edit</div>
                         </div>
                         <div className="delete-comment-button">
                             <div className="delete-comment" onClick={() => handleDelete(comment?.id)}>Delete</div>

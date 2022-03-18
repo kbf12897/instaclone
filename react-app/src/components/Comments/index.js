@@ -21,8 +21,8 @@ const Comments = ({ post }) => {
 
     const setEditComment = (commentId, bool) => {
         setShowCommentEdit(bool);
-        setCommentId(commentId)
-    }
+        setCommentId(commentId);
+    };
 
     return (
         <div className='comments-container'>
@@ -32,7 +32,7 @@ const Comments = ({ post }) => {
                     <div className='comment-body-owner'>
                         <div className='comment-owner-content'>
                             <div className='comment-owner'>{comment?.comment_owner}</div>
-                            {!showCommentEdit && <div className='comment-content'>{comment?.comment_body}</div>}
+                            {commentId !== comment?.id && <div className='comment-content'>{comment?.comment_body}</div>}
                             {(showCommentEdit && comment.id === commentId) && <EditCommentForm setShowCommentEdit={setShowCommentEdit} setCommentId={setCommentId} comment={comment} />}
                         </div>
                         <CommentMenu comment={comment} setEditComment={setEditComment} showCommentEdit={showCommentEdit} setShowCommentEdit={setShowCommentEdit}/>
