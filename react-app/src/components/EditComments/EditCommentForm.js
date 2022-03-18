@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { editComment } from '../../store/comment';
 import './EditComment.css';
 
-const EditCommentForm = ({ setShowCommentEdit, comment }) => {
+const EditCommentForm = ({ setShowCommentEdit, setCommentId ,comment }) => {
     const dispatch = useDispatch();
     const [commentValue, setCommentValue] = useState(comment?.comment_body);
     const user_id = comment?.user_id;
@@ -13,6 +13,7 @@ const EditCommentForm = ({ setShowCommentEdit, comment }) => {
         e.preventDefault();
 
         setShowCommentEdit(false);
+        setCommentId(-1)
         return await dispatch(editComment({ user_id, post_id, commentValue }))
     }
 
