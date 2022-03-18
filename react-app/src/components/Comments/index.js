@@ -26,8 +26,8 @@ const Comments = ({ post }) => {
 
     return (
         <div className='comments-container'>
-            {comments?.map(comment => (
-                <div key={comment.id}>
+            {comments?.map((comment, i) => (
+                <div key={i}>
                     {comment?.post_id === post?.id &&
                     <div className='comment-body-owner'>
                         <div className='comment-owner-content'>

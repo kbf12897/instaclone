@@ -3,12 +3,12 @@ import { useDispatch } from 'react-redux';
 import { editComment } from '../../store/comment';
 import './EditComment.css';
 
-const EditCommentForm = ({ setShowCommentEdit, setCommentId ,comment }) => {
+const EditCommentForm = ({ setShowCommentEdit, setCommentId, comment }) => {
     const dispatch = useDispatch();
     const [comment_body, setComment_body] = useState(comment?.comment_body);
     // const user_id = comment?.user_id;
     // const post_id = comment?.post_id;
-    const commentId = comment?.id;
+    let commentId = comment?.id;
 
 
     const handleSubmit = async (e) => {

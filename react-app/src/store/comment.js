@@ -97,8 +97,9 @@ const commentReducer = (state = {}, action) => {
             return newState;
         case UPDATE:
             newState = {...state};
-            console.log('REDUCER', newState)
-            newState[action?.commment?.id] = action?.comment;
+            // console.log('ACTION', action.comment)
+            // console.log('REDUCER', newState[action.comment.id])
+            newState[action.comment.id] = action.comment;
             return newState;
         case DELETE:
             newState = {...state};
