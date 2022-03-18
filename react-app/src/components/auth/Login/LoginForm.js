@@ -41,8 +41,8 @@ const LoginForm = () => {
   return (
     <div className='main-container'>
       <div className='img-form-container'>
-        <div className='img-container'>
-          <img className='iphones' alt='iphone' src='https://www.instagram.com/static/images/homepage/phones/home-phones.png/1dc085cdb87d.png'/>
+        <div className='login-img-container'>
+          {/* <img className='iphones' alt='iphone' src='https://www.instagram.com/static/images/homepage/phones/home-phones.png/1dc085cdb87d.png'/> */}
           <img className='iphone-img' alt='iphone-img' src='https://www.instagram.com/static/images/homepage/screenshots/screenshot3-2x.png/fe2540684ab2.png' />
         </div>
         <div className='right-side-container'></div>

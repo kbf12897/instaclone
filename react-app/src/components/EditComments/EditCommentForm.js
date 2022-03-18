@@ -6,8 +6,6 @@ import './EditComment.css';
 const EditCommentForm = ({ setShowCommentEdit, setCommentId, comment }) => {
     const dispatch = useDispatch();
     const [comment_body, setComment_body] = useState(comment?.comment_body);
-    // const user_id = comment?.user_id;
-    // const post_id = comment?.post_id;
     let commentId = comment?.id;
 
 
@@ -15,8 +13,8 @@ const EditCommentForm = ({ setShowCommentEdit, setCommentId, comment }) => {
         e.preventDefault();
 
         setShowCommentEdit(false);
-        setCommentId(-1)
-        return await dispatch(editComment({ commentId, comment_body }))
+        setCommentId(-1);
+        return await dispatch(editComment({ commentId, comment_body }));
     }
 
     return (

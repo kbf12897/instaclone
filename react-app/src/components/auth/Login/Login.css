@@ -14,12 +14,18 @@ html {
     z-index: 0;
 }
 
+.login-img-container {
+    height: 600px;
+    width: 500px;;
+    background-image: url('https://www.instagram.com/static/images/homepage/phones/home-phones.png/1dc085cdb87d.png');
+}
+
 .iphone-img {
     max-height: 540px;
     z-index: 1;
-    position: absolute;
-    left: 708px;
-    top: 150px;
+    position: relative;
+    left: 155px;
+    top: 25px;
 }
 
 .form-container {
