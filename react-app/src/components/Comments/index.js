@@ -1,22 +1,27 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getComments } from '../../store/comment';
+import EditCommentForm from '../EditComments/EditCommentForm';
 import './comments.css'
 
 
 const Comments = ({ post }) => {
     const dispatch = useDispatch();
     const commentsObj = useSelector(state => state?.commentReducer);
+    const [showCommentEdit, setShowCommentEdit] = useState(false);
+    const [commentId, setCommentId] = useState()
     const comments = Object.values(commentsObj);
     const postId = post?.id;
-    // const sessionUser = useSelector((state) => state.session.user);
+    const sessionUser = useSelector((state) => state.session.user);
 
     useEffect(() => {
         dispatch(getComments(postId));
     }, [dispatch, postId])
 
-    // console.log('AJDFHAFH', commentsObj)
-
+    const setEditComment = (commentId, bool) => {
+        setShowCommentEdit(bool);
+        setCommentId(commentId)
+    }
 
     return (
         <div className='comments-container'>
@@ -24,8 +29,12 @@ const Comments = ({ post }) => {
                 <>
                     {comment?.post_id === post?.id &&
                     <div className='comment-body-owner' key={comment.id}>
-                        <div className='comment-owner'>{comment?.comment_owner}</div>
-                        <div className='comment-content'>{comment?.comment_body}</div>
+                        <div className='comment-owner-content'>
+                            <div className='comment-owner'>{comment?.comment_owner}</div>
+                            {!showCommentEdit && <div className='comment-content'>{comment?.comment_body}</div>}
+                            {(showCommentEdit && comment?.id === commentId) && <EditCommentForm setShowCommentEdit={setShowCommentEdit} comment={comment} />}
+                        </div>
+                        {sessionUser?.id === comment?.user_id && <div className='comment-three-dots' onClick={() => setEditComment(comment?.id ,!showCommentEdit)}><svg aria-label="More options" className="three-dots-comments" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg></div>}
                     </div>}
                 </>
             ))}

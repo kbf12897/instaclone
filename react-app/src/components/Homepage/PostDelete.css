@@ -23,3 +23,7 @@
 .delete-post-button:hover, .user-page-link:hover, .cancel-delete-button:hover {
     background-color: #fafafa;
 }
+
+.three-dots {
+    cursor: pointer;
+}

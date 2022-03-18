@@ -21,3 +21,18 @@
     margin-left: 5px;
     margin-top: 2px;
 }
+
+.comment-owner-content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.comment-three-dots {
+    width: 100%;
+}
+
+.three-dots-comments {
+    float: right;
+    margin-right: 10px;;
+}
