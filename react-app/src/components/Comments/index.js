@@ -15,6 +15,8 @@ const Comments = ({ post }) => {
     const postId = post?.id;
     // const sessionUser = useSelector((state) => state.session.user);
 
+    const postCommentsLength = comments.filter(comment => comment?.post_id === postId).length;
+
     useEffect(() => {
         dispatch(getComments(postId));
     }, [dispatch, postId])
