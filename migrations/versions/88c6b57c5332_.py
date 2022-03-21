@@ -1,7 +1,7 @@
 """empty message
 
 Revision ID: 88c6b57c5332
-Revises: 
+Revises:
 Create Date: 2022-03-15 15:50:42.559444
 
 """
@@ -37,7 +37,7 @@ def upgrade():
     op.create_table('posts',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('img_url', sa.String(length=255), nullable=False),
+    sa.Column('img_url', sa.String(length=1000), nullable=False),
     sa.Column('caption', sa.String(length=255), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.Column('updated_at', sa.DateTime(), nullable=True),

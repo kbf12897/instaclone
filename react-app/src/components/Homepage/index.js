@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { useEffect } from 'react';
 import { getPosts } from '../../store/posts';
 import PostDeleteModal from './PostDelete';
@@ -39,7 +40,7 @@ const Homepage = () => {
                             <div className='post-user-container'>
                                 <div className='post-profile-img-container'>
                                     <img className='post-profile-img' src={post?.post_owner_profile_img} alt='profile-img' />
-                                    <div className='post-user'>{post?.post_owner}</div>
+                                    <NavLink to={`/users/${post.user_id}`} className={'post-user'}>{post?.post_owner}</NavLink>
                                 </div>
                                 <PostDeleteModal post={post}/>
                             </div>

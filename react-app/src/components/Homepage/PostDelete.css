@@ -27,3 +27,8 @@
 .three-dots {
     cursor: pointer;
 }
+
+.user-page-link {
+    text-decoration: none;
+    color: black;
+}

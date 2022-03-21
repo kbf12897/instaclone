@@ -27,4 +27,5 @@ class Post(db.Model):
             'updated_at': self.updated_at,
             'post_owner': self.users.username,
             'post_owner_profile_img': self.users.profile_img,
+            'comment_count': len(self.comments),
         }
