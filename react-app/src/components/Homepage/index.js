@@ -13,6 +13,7 @@ const Homepage = () => {
     const postsObj = useSelector((state) => state?.postReducer);
     const sessionUser = useSelector((state) => state.session.user)
     const posts = postsObj && Object.values(postsObj);
+    const orderedPosts = posts.reverse();
     const [showEdit, setShowEdit] = useState(false)
     const [postId, setPostId] = useState()
 
@@ -33,7 +34,7 @@ const Homepage = () => {
                     <h2>user story placeholder</h2>
                 </div>
                 <div className='all-posts'>
-                    {posts?.map((post) => (
+                    {orderedPosts?.map((post) => (
                         <div key={post.id} className='post-container'>
                             <div className='post-user-container'>
                                 <div className='post-profile-img-container'>
