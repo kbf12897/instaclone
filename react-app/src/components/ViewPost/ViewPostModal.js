@@ -18,7 +18,7 @@ function ViewPostModal({ post }) {
             </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <ViewPost closeModal={() => setShowModal(false)} />
+                    <ViewPost closeModal={() => setShowModal(false)} post={post}/>
                 </Modal>
             )}
         </div>
