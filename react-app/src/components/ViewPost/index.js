@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import ViewPostCommentMenu from "./ViewPostEditComment";
+import EditCommentForm from "../EditComments/EditCommentForm";
 import "./ViewPost.css";
 
 function ViewPost({ post }) {
@@ -41,7 +42,8 @@ function ViewPost({ post }) {
                                 <div className='modal-comment-body-owner'>
                                     <div className='modal-comment-owner-content'>
                                         <div className='modal-comment-owner'>{comment?.comment_owner}</div>
-                                        <div className='modal-comment-content'>{comment?.comment_body}</div>
+                                        {!showCommentEdit && <div className='comment-content'>{comment?.comment_body}</div>}
+                                        {(showCommentEdit && comment?.id === commentId) && <EditCommentForm setShowCommentEdit={setShowCommentEdit} setCommentId={setCommentId} comment={comment} />}
                                     </div>
                                     <ViewPostCommentMenu comment={comment} setEditComment={setEditComment} showCommentEdit={showCommentEdit} setShowCommentEdit={setShowCommentEdit} />
                                 </div>}
