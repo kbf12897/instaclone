@@ -17,7 +17,8 @@ const Comments = ({ post }) => {
     // const sessionUser = useSelector((state) => state.session.user);
 
     const postComments = comments.filter(comment => comment?.post_id === postId);
-    // console.log('LENGTH', postComments)
+    const lastTwoComments = postComments.slice(postComments.length - 2)
+    console.log('LENGTH', lastTwoComments)
 
 
 
@@ -35,10 +36,21 @@ const Comments = ({ post }) => {
             {postComments.length > 4 &&
             <div>
             <ViewPostModal post={post}/>
-            {/* <div>{postComments[postComments.length-1].comment_body}</div>
-            <div>{postComments[postComments.length-2].comment_body}</div> */}
+            {lastTwoComments.map((comment, i) => (
+                <div key={i}>
+                {comment?.post_id === post?.id &&
+                <div className='comment-body-owner'>
+                    <div className='comment-owner-content'>
+                        <div className='comment-owner'>{comment?.comment_owner}</div>
+                        <div className='comment-content'>{comment?.comment_body}</div>
+                        {(showCommentEdit && comment.id === commentId) && <EditCommentForm setShowCommentEdit={setShowCommentEdit} setCommentId={setCommentId} comment={comment} />}
+                    </div>
+                    <CommentMenu comment={comment} setEditComment={setEditComment} showCommentEdit={showCommentEdit} setShowCommentEdit={setShowCommentEdit}/>
+                </div>}
+            </div>
+            ))}
             </div>}
-            {postComments?.map((comment, i) => (
+            {postComments.length < 5 && postComments?.map((comment, i) => (
                 <div key={i}>
                     {comment?.post_id === post?.id &&
                     <div className='comment-body-owner'>
