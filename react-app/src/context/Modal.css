@@ -24,6 +24,6 @@
     background-color: white;
     border: 0 solid #000;
     border-radius: 15px;
-    height: 640px;
+    height: fit-content;
     min-width: 600px;
   }

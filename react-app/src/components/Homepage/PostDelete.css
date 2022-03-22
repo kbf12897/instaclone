@@ -7,7 +7,7 @@
     margin-top: 12px;
 }
 
-.delete-post-button, .user-page-link, .cancel-delete-button {
+.delete-post-button, .user-page-link, .cancel-delete-button, .go-to-post {
     width: 100%;
     text-align: center;
     padding-top: 20px;
@@ -20,7 +20,7 @@
     color: #ed4956;
 }
 
-.delete-post-button:hover, .user-page-link:hover, .cancel-delete-button:hover {
+.delete-post-button:hover, .user-page-link:hover, .cancel-delete-button:hover, .go-to-post:hover {
     background-color: #fafafa;
 }
 

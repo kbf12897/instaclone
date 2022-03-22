@@ -22,7 +22,8 @@
 .new-post-form {
     display: flex;
     flex-direction: column;
-    margin-top: 150px;
+    padding-bottom: 100px;
+    padding-top: 60px;
 }
 
 .image-input, .caption-input {

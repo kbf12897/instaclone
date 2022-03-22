@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getComments } from '../../store/comment';
 import EditCommentForm from '../EditComments/EditCommentForm';
 import CommentMenu from '../EditComments/CommentMenu';
+import ViewPostModal from '../ViewPost/ViewPostModal';
 import './comments.css'
 
 
@@ -15,8 +16,9 @@ const Comments = ({ post }) => {
     const postId = post?.id;
     // const sessionUser = useSelector((state) => state.session.user);
 
-    const postCommentsLength = comments.filter(comment => comment?.post_id === postId).length;
-    console.log('LENGTH', postCommentsLength)
+    const postComments = comments.filter(comment => comment?.post_id === postId);
+    // console.log('LENGTH', postComments)
+
 
 
     useEffect(() => {
@@ -30,13 +32,19 @@ const Comments = ({ post }) => {
 
     return (
         <div className='comments-container'>
-            {comments?.map((comment, i) => (
+            {postComments.length > 4 &&
+            <div>
+            <ViewPostModal post={post}/>
+            {/* <div>{postComments[postComments.length-1].comment_body}</div>
+            <div>{postComments[postComments.length-2].comment_body}</div> */}
+            </div>}
+            {postComments?.map((comment, i) => (
                 <div key={i}>
                     {comment?.post_id === post?.id &&
                     <div className='comment-body-owner'>
                         <div className='comment-owner-content'>
                             <div className='comment-owner'>{comment?.comment_owner}</div>
-                            {commentId !== comment?.id && <div className='comment-content'>{comment?.comment_body}</div>}
+                            <div className='comment-content'>{comment?.comment_body}</div>
                             {(showCommentEdit && comment.id === commentId) && <EditCommentForm setShowCommentEdit={setShowCommentEdit} setCommentId={setCommentId} comment={comment} />}
                         </div>
                         <CommentMenu comment={comment} setEditComment={setEditComment} showCommentEdit={showCommentEdit} setShowCommentEdit={setShowCommentEdit}/>

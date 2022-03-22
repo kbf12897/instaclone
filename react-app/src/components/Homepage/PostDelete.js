@@ -14,8 +14,6 @@ const PostDeleteModal = ({ post }) => {
         return await dispatch(deletePost(postId))
     }
 
-
-
     return (
         <>
             <div className='three-dots' onClick={e => setShowModal(true)}>
@@ -26,6 +24,7 @@ const PostDeleteModal = ({ post }) => {
                     <div className='delete-post-container'>
                         {sessionUser.id === Number(post?.user_id) && <div className='delete-post-button' onClick={() => handleDelete(post?.id)}>Delete</div>}
                         <NavLink to={`/users/${post.user_id}`} className='user-page-link'>User page</NavLink>
+                        <div className='go-to-post'>Go to post</div>
                         <div className='cancel-delete-button' onClick={() => setShowModal(false)}>Cancel</div>
                     </div>
                 </Modal>

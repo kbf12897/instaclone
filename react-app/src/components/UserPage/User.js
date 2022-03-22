@@ -36,7 +36,7 @@ function User() {
     <div className='user-page-container'>
       <div className='user-info-container'>
         <div className='user-page-profile-img'>
-          <img className='profile-page-img' src={user.profile_img} />
+          <img className='profile-page-img' alt='profile' src={user.profile_img} />
         </div>
         <div>
           <h1 className='username'>{user.username}</h1>
@@ -47,7 +47,7 @@ function User() {
           <>
             {post?.user_id === Number(userId) &&
             <div className='grid'>
-              <img className='user-page-img' src={post?.img_url} />
+              <img className='user-page-img' alt='user-posts' src={post?.img_url} />
             </div>}
           </>
         ))}
