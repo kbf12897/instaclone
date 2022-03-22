@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
-import CommentMenu from "../EditComments/CommentMenu";
-import EditCommentForm from "../EditComments/EditCommentForm";
+import ViewPostCommentMenu from "./ViewPostEditComment";
 import "./ViewPost.css";
 
-function ViewPost({ post, showCommentEdit, setShowCommentEdit, setCommentId, commentId }) {
+function ViewPost({ post }) {
     // const user = useSelector((state) => state?.session?.user)
     const commentsObj = useSelector(state => state?.commentReducer);
     const comments = Object.values(commentsObj);
     const postId = post?.id;
     const postComments = comments.filter(comment => comment?.post_id === postId);
+
+    const [showCommentEdit, setShowCommentEdit] = useState(false);
+    const [commentId, setCommentId] = useState(-1)
 
     const setEditComment = (commentId, bool) => {
         setShowCommentEdit(bool);
@@ -41,9 +42,8 @@ function ViewPost({ post, showCommentEdit, setShowCommentEdit, setCommentId, com
                                     <div className='modal-comment-owner-content'>
                                         <div className='modal-comment-owner'>{comment?.comment_owner}</div>
                                         <div className='modal-comment-content'>{comment?.comment_body}</div>
-                                        {(showCommentEdit && comment.id === commentId) && <EditCommentForm setShowCommentEdit={setShowCommentEdit} setCommentId={setCommentId} comment={comment} />}
                                     </div>
-                                    <CommentMenu comment={comment} setEditComment={setEditComment} showCommentEdit={showCommentEdit} />
+                                    <ViewPostCommentMenu comment={comment} setEditComment={setEditComment} showCommentEdit={showCommentEdit} setShowCommentEdit={setShowCommentEdit} />
                                 </div>}
                             </div>
                         ))}

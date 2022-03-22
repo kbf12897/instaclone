@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteComment } from '../../store/comment';
-import "./CommentMenu.css";
+import "../EditComments/CommentMenu.css";
 
 function CommentMenu({ comment, setEditComment, showCommentEdit }) {
     const [showMenu, setShowMenu] = useState(false);

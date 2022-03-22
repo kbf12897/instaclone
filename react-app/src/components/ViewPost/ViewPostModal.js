@@ -18,7 +18,7 @@ function ViewPostModal({ post, setEditComment, showCommentEdit, setShowCommentEd
             </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <ViewPost closeModal={() => setShowModal(false)} post={post} showCommentEdit={showCommentEdit} setShowCommentEdit={setShowCommentEdit} setCommentId={setCommentId} commentId={commentId} />
+                    <ViewPost closeModal={() => setShowModal(false)} post={post} showCommentEdit={showCommentEdit} setEditComment={setEditComment} setShowCommentEdit={setShowCommentEdit} setCommentId={setCommentId} commentId={commentId} />
                 </Modal>
             )}
         </div>

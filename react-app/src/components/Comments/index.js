@@ -34,10 +34,9 @@ const Comments = ({ post }) => {
         <div className='comments-container'>
             {postComments.length > 4 &&
             <div>
-            <ViewPostModal post={post} showCommentEdit={showCommentEdit} setShowCommentEdit={setShowCommentEdit} setCommentId={setCommentId} commentId={commentId} />
+            <ViewPostModal post={post} showCommentEdit={showCommentEdit} setEditComment={setEditComment} setShowCommentEdit={setShowCommentEdit} setCommentId={setCommentId} commentId={commentId} />
             {lastTwoComments.map((comment, i) => (
                 <div key={i}>
-                {comment?.post_id === post?.id &&
                 <div className='comment-body-owner'>
                     <div className='comment-owner-content'>
                         <div className='comment-owner'>{comment?.comment_owner}</div>
@@ -45,7 +44,7 @@ const Comments = ({ post }) => {
                         {(showCommentEdit && comment.id === commentId) && <EditCommentForm setShowCommentEdit={setShowCommentEdit} setCommentId={setCommentId} comment={comment} />}
                     </div>
                     <CommentMenu comment={comment} setEditComment={setEditComment} showCommentEdit={showCommentEdit} setShowCommentEdit={setShowCommentEdit}/>
-                </div>}
+                </div>
             </div>
             ))}
             </div>}
