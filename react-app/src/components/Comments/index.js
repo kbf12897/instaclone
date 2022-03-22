@@ -18,7 +18,6 @@ const Comments = ({ post }) => {
 
     const postComments = comments.filter(comment => comment?.post_id === postId);
     const lastTwoComments = postComments.slice(postComments.length - 2)
-    console.log('LENGTH', lastTwoComments)
 
 
 
@@ -35,7 +34,7 @@ const Comments = ({ post }) => {
         <div className='comments-container'>
             {postComments.length > 4 &&
             <div>
-            <ViewPostModal post={post}/>
+            <ViewPostModal post={post} showCommentEdit={showCommentEdit} setShowCommentEdit={setShowCommentEdit} setCommentId={setCommentId} commentId={commentId} />
             {lastTwoComments.map((comment, i) => (
                 <div key={i}>
                 {comment?.post_id === post?.id &&
@@ -55,9 +54,9 @@ const Comments = ({ post }) => {
                     {comment?.post_id === post?.id &&
                     <div className='comment-body-owner'>
                         <div className='comment-owner-content'>
-                            <div className='comment-owner'>{comment?.comment_owner}</div>
-                            <div className='comment-content'>{comment?.comment_body}</div>
-                            {(showCommentEdit && comment.id === commentId) && <EditCommentForm setShowCommentEdit={setShowCommentEdit} setCommentId={setCommentId} comment={comment} />}
+                                <div className='comment-owner'>{comment?.comment_owner}</div>
+                                {!showCommentEdit && <div className='comment-content'>{comment?.comment_body}</div>}
+                                {(showCommentEdit && comment.id === commentId) && <EditCommentForm setShowCommentEdit={setShowCommentEdit} setCommentId={setCommentId} comment={comment} />}
                         </div>
                         <CommentMenu comment={comment} setEditComment={setEditComment} showCommentEdit={showCommentEdit} setShowCommentEdit={setShowCommentEdit}/>
                     </div>}
