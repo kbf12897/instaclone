@@ -18,7 +18,9 @@
 .comment-content {
     font-family: sans-serif;
     font-size: 13px;
+    max-width: 500px;
     margin-left: 5px;
+    overflow-wrap: break-word;
     margin-top: 2px;
 }
 

@@ -104,6 +104,8 @@
     font-size: 13px;
     margin-left: 5px;
     margin-top: 2px;
+    overflow-wrap: break-word;
+    max-width: 500px;
 }
 
 .caption-post-creator {
