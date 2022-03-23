@@ -17,7 +17,7 @@ const ViewComment = ({ comment }) => {
             <div className='modal-comment-body-owner'>
                 <div className='modal-comment-owner-content'>
                     <div className='modal-comment-owner'>{comment?.comment_owner}</div>
-                    <div className='comment-content'>{comment?.comment_body}</div>
+                    {!displayEdit && <div className='comment-content'>{comment?.comment_body}</div>}
                     {(displayEdit && comment?.id === commentId) && <EditCommentForm setDisplayEdit={setDisplayEdit} setCommentId={setCommentId} comment={comment} />}
                 </div>
                 <ViewPostCommentMenu comment={comment} setEditComment={setEditComment} displayEdit={displayEdit} setDisplayEdit={setDisplayEdit} />
