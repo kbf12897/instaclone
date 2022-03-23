@@ -1,6 +1,7 @@
 .comment-form-container {
     width: 100%;
     border-top: 1px solid rgba(var(--b6a,219,219,219),1);
+    margin-top: 20px;
 }
 
 .comment-input {
