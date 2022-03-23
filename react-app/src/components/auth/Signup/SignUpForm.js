@@ -22,8 +22,13 @@ const SignUpForm = () => {
       if (data) {
         setErrors(data)
       }
+    } else {
+      setErrors(['Passwords do not match.'])
     }
   };
+
+
+
 
   const handleDemo = async (demo) => {
     const { email, password } = demo;
@@ -75,6 +80,7 @@ const SignUpForm = () => {
               name='username'
               onChange={updateUsername}
               value={username}
+              required={true}
             ></input>
           </div>
           <div>
@@ -85,6 +91,7 @@ const SignUpForm = () => {
               name='email'
               onChange={updateEmail}
               value={email}
+              required={true}
             ></input>
           </div>
           <div>
@@ -95,6 +102,7 @@ const SignUpForm = () => {
               name='password'
               onChange={updatePassword}
               value={password}
+              required={true}
             ></input>
           </div>
           <div>
