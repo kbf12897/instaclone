@@ -18,6 +18,17 @@ const Homepage = () => {
     const [showEdit, setShowEdit] = useState(false)
     const [postId, setPostId] = useState()
 
+    // USERS
+    const [users, setUsers] = useState([]);
+    useEffect(() => {
+        async function fetchData() {
+        const response = await fetch('/api/users/');
+        const responseData = await response.json();
+        setUsers(responseData.users);
+        }
+        fetchData();
+    }, []);
+
     useEffect(() => {
         dispatch(getPosts());
     }, [dispatch])
@@ -62,7 +73,25 @@ const Homepage = () => {
                 </div>
             </div>
             <div className='right-side-user-panel'>
-                <h2>suggested user placeholder</h2>
+                <div className='suggested-users-container'>
+                    <div className='session-user-info-container'>
+                        <img className='session-user-profile-img' src={sessionUser.profile_img} />
+                        <div className='suggested-users-user'>{sessionUser.username}</div>
+                    </div>
+                    <div className='suggested-users-sentence'>Suggestions For You</div>
+                    <div className='suggested-users'>
+                        {users.map((user) => (
+                            <>
+                                {user.id !== sessionUser.id && <div className='suggested-user-and-profile-img'>
+                                    <NavLink to={`/users/${user.id}`}>
+                                        <img className='suggested-profile-img' src={user.profile_img} alt='profile-picture' />
+                                        <div className='suggested-user'>{user.username}</div>
+                                    </NavLink>
+                                </div>}
+                            </>
+                        ))}
+                    </div>
+                </div>
             </div>
         </div>
      );

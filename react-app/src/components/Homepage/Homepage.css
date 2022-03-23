@@ -29,6 +29,7 @@
 .right-side-user-panel {
     position: fixed;
     left: 1150px;
+    top: 100px;
 }
 
 .post-user {
@@ -125,4 +126,53 @@
 .caption-three-dots {
     margin-right: 30px;
     cursor: pointer;
+}
+
+.suggested-users-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.suggested-profile-img {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.session-user-profile-img {
+    border-radius: 50%;
+    height: 56px;
+    width: 56px;
+}
+
+.suggested-users-user {
+    font-family: sans-serif;
+    margin-left: 20px;
+}
+
+.session-user-info-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.suggested-user-and-profile-img a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+    text-decoration: none;
+}
+
+.suggested-user {
+    color: black;
+    margin-left: 10px;
+    font-family: sans-serif;
+}
+
+.suggested-users-sentence {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-family: sans-serif;
+    color: #8e8e8e;
 }

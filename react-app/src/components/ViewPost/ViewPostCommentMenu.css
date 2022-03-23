@@ -54,4 +54,5 @@
 
 .view-comment-edit-delete-button {
     cursor: pointer;
+    margin-right: 20px;
 }

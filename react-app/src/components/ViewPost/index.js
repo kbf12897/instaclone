@@ -12,13 +12,6 @@ function ViewPost({ post }) {
     const postId = post?.id;
     const postComments = comments.filter(comment => comment?.post_id === postId);
 
-    const [showCommentEdit, setShowCommentEdit] = useState(false);
-    const [commentId, setCommentId] = useState(-1)
-
-    const setEditComment = (commentId, bool) => {
-        setShowCommentEdit(bool);
-        setCommentId(commentId);
-    };
 
     return (
         <>
@@ -39,17 +32,6 @@ function ViewPost({ post }) {
                         <div className="modal-comment-container">
                         {postComments?.map((comment) => (
                             <ViewComment comment={comment} />
-                            // <div key={i}>
-                            //     {comment?.post_id === post?.id &&
-                            //     <div className='modal-comment-body-owner'>
-                            //         <div className='modal-comment-owner-content'>
-                            //             <div className='modal-comment-owner'>{comment?.comment_owner}</div>
-                            //             {!showCommentEdit && <div className='comment-content'>{comment?.comment_body}</div>}
-                            //             {(showCommentEdit && comment?.id === commentId) && <EditCommentForm setShowCommentEdit={setShowCommentEdit} setCommentId={setCommentId} comment={comment} />}
-                            //         </div>
-                            //         <ViewPostCommentMenu comment={comment} setEditComment={setEditComment} showCommentEdit={showCommentEdit} setShowCommentEdit={setShowCommentEdit} />
-                            //     </div>}
-                            // </div>
                         ))}
                         </div>
                     </div>

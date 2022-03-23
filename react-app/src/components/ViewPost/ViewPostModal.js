@@ -4,7 +4,7 @@ import { Modal } from '../../context/Modal';
 import ViewPost from ".";
 import './ViewPost.css';
 
-function ViewPostModal({ post, setEditComment, showCommentEdit, setShowCommentEdit, setCommentId, commentId }) {
+function ViewPostModal({ post }) {
     const [showModal, setShowModal] = useState(false);
     const commentsObj = useSelector(state => state?.commentReducer);
     const comments = Object.values(commentsObj);
@@ -18,7 +18,7 @@ function ViewPostModal({ post, setEditComment, showCommentEdit, setShowCommentEd
             </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <ViewPost closeModal={() => setShowModal(false)} post={post} showCommentEdit={showCommentEdit} setEditComment={setEditComment} setShowCommentEdit={setShowCommentEdit} setCommentId={setCommentId} commentId={commentId} />
+                    <ViewPost closeModal={() => setShowModal(false)} post={post} />
                 </Modal>
             )}
         </div>

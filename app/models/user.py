@@ -26,7 +26,6 @@ class User(db.Model, UserMixin):
     # one to many with posts, comments, likes
     posts = db.relationship('Post', back_populates='users')
     comments = db.relationship('Comment', back_populates='users')
-    likes = db.relationship('Like', back_populates='users')
 
 
     @property

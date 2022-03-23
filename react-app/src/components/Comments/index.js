@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getComments } from '../../store/comment';
 import EditCommentForm from '../EditComments/EditCommentForm';
 import CommentMenu from '../EditComments/CommentMenu';
+import ViewComment from './ViewComment';
 import ViewPostModal from '../ViewPost/ViewPostModal';
 import './comments.css'
 
@@ -10,8 +11,6 @@ import './comments.css'
 const Comments = ({ post }) => {
     const dispatch = useDispatch();
     const commentsObj = useSelector(state => state?.commentReducer);
-    const [showCommentEdit, setShowCommentEdit] = useState(false);
-    const [commentId, setCommentId] = useState(-1)
     const comments = Object.values(commentsObj);
     const postId = post?.id;
     // const sessionUser = useSelector((state) => state.session.user);
@@ -25,41 +24,18 @@ const Comments = ({ post }) => {
         dispatch(getComments(postId));
     }, [dispatch, postId])
 
-    const setEditComment = (commentId, bool) => {
-        setShowCommentEdit(bool);
-        setCommentId(commentId);
-    };
 
     return (
         <div className='comments-container'>
             {postComments.length > 4 &&
             <div>
-            <ViewPostModal post={post} showCommentEdit={showCommentEdit} setEditComment={setEditComment} setShowCommentEdit={setShowCommentEdit} setCommentId={setCommentId} commentId={commentId} />
-            {lastTwoComments.map((comment, i) => (
-                <div key={i}>
-                <div className='comment-body-owner'>
-                    <div className='comment-owner-content'>
-                        <div className='comment-owner'>{comment?.comment_owner}</div>
-                        {!showCommentEdit && <div className='comment-content'>{comment?.comment_body}</div>}
-                        {(showCommentEdit && comment.id === commentId) && <EditCommentForm setShowCommentEdit={setShowCommentEdit} setCommentId={setCommentId} comment={comment} />}
-                    </div>
-                    <CommentMenu comment={comment} setEditComment={setEditComment} showCommentEdit={showCommentEdit} setShowCommentEdit={setShowCommentEdit}/>
-                </div>
-            </div>
+            <ViewPostModal post={post} />
+            {lastTwoComments.map((comment) => (
+                <ViewComment comment={comment} />
             ))}
             </div>}
-            {postComments.length < 5 && postComments?.map((comment, i) => (
-                <div key={i}>
-                    {comment?.post_id === post?.id &&
-                    <div className='comment-body-owner'>
-                        <div className='comment-owner-content'>
-                                <div className='comment-owner'>{comment?.comment_owner}</div>
-                                {(comment.id !== commentId && !showCommentEdit) && <div className='comment-content'>{comment?.comment_body}</div>}
-                                {(showCommentEdit && comment?.id === commentId) && <EditCommentForm setShowCommentEdit={setShowCommentEdit} setCommentId={setCommentId} comment={comment} />}
-                        </div>
-                        <CommentMenu comment={comment} setEditComment={setEditComment} showCommentEdit={showCommentEdit} setShowCommentEdit={setShowCommentEdit}/>
-                    </div>}
-                </div>
+            {postComments.length < 5 && postComments?.map((comment) => (
+                <ViewComment comment={comment} />
             ))}
         </div>
     );

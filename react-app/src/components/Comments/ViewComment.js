@@ -1,6 +1,7 @@
 import { useState } from "react";
 import EditCommentForm from "../EditComments/EditCommentForm";
 import ViewPostCommentMenu from "../ViewPost/ViewPostEditComment";
+import '../ViewPost/ViewPost.css';
 
 const ViewComment = ({ comment }) => {
     const [displayEdit, setDisplayEdit] = useState(false);
