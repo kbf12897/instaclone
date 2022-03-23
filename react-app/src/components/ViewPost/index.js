@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import ViewPostCommentMenu from "./ViewPostEditComment";
 import EditCommentForm from "../EditComments/EditCommentForm";
+import ViewComment from "../Comments/ViewComment";
 import "./ViewPost.css";
 
 function ViewPost({ post }) {
@@ -36,18 +37,19 @@ function ViewPost({ post }) {
                             <div className="modal-post-caption">{post?.caption}</div>
                         </div>
                         <div className="modal-comment-container">
-                        {postComments?.map((comment, i) => (
-                            <div key={i}>
-                                {comment?.post_id === post?.id &&
-                                <div className='modal-comment-body-owner'>
-                                    <div className='modal-comment-owner-content'>
-                                        <div className='modal-comment-owner'>{comment?.comment_owner}</div>
-                                        {!showCommentEdit && <div className='comment-content'>{comment?.comment_body}</div>}
-                                        {(showCommentEdit && comment?.id === commentId) && <EditCommentForm setShowCommentEdit={setShowCommentEdit} setCommentId={setCommentId} comment={comment} />}
-                                    </div>
-                                    <ViewPostCommentMenu comment={comment} setEditComment={setEditComment} showCommentEdit={showCommentEdit} setShowCommentEdit={setShowCommentEdit} />
-                                </div>}
-                            </div>
+                        {postComments?.map((comment) => (
+                            <ViewComment comment={comment} />
+                            // <div key={i}>
+                            //     {comment?.post_id === post?.id &&
+                            //     <div className='modal-comment-body-owner'>
+                            //         <div className='modal-comment-owner-content'>
+                            //             <div className='modal-comment-owner'>{comment?.comment_owner}</div>
+                            //             {!showCommentEdit && <div className='comment-content'>{comment?.comment_body}</div>}
+                            //             {(showCommentEdit && comment?.id === commentId) && <EditCommentForm setShowCommentEdit={setShowCommentEdit} setCommentId={setCommentId} comment={comment} />}
+                            //         </div>
+                            //         <ViewPostCommentMenu comment={comment} setEditComment={setEditComment} showCommentEdit={showCommentEdit} setShowCommentEdit={setShowCommentEdit} />
+                            //     </div>}
+                            // </div>
                         ))}
                         </div>
                     </div>

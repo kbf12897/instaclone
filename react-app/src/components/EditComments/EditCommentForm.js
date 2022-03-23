@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { editComment } from '../../store/comment';
 import './EditComment.css';
 
-const EditCommentForm = ({ setShowCommentEdit, setCommentId, comment }) => {
+const EditCommentForm = ({ setDisplayEdit, setCommentId, comment }) => {
     const dispatch = useDispatch();
     const [comment_body, setComment_body] = useState(comment?.comment_body);
     let commentId = comment?.id;
@@ -12,7 +12,7 @@ const EditCommentForm = ({ setShowCommentEdit, setCommentId, comment }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        setShowCommentEdit(false);
+        setDisplayEdit(false);
         setCommentId(-1);
         return await dispatch(editComment({ commentId, comment_body }));
     }
