@@ -90,6 +90,13 @@ const Homepage = () => {
                                 </div>}
                             </>
                         ))}
+                        <div className='technologies-about-me-contaner'>
+                            <div className='technologies'>Javascript Python React Flask Redux <br/> SQLAlchemy Postgres Docker Git</div>
+                            <div className='about-me-links'>
+                                <a href='https://github.com/kbf12897'><img className='github-link' src='https://cdn3.iconfinder.com/data/icons/inficons/512/github.png' alt='github' /></a>
+                                <a href='https://www.linkedin.com/in/karl-felter-678249215/'><img className='linkedin-link' src='https://cdn-icons-png.flaticon.com/512/61/61109.png' alt='linkedin' /></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
