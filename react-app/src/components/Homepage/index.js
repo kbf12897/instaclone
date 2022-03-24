@@ -42,9 +42,9 @@ const Homepage = () => {
     return (
         <div className='homepage-container'>
             <div className='posts-users'>
-                <div className='user-story-scrollbar'>
+                {/* <div className='user-story-scrollbar'>
                     <h2>user story placeholder</h2>
-                </div>
+                </div> */}
                 <div className='all-posts'>
                     {orderedPosts?.map((post) => (
                         <div key={post.id} className='post-container'>

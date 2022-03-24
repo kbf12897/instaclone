@@ -8,6 +8,12 @@ from app.s3_helpers import (upload_file_to_s3, allowed_file, get_unique_filename
 
 post_routes = Blueprint('posts', __name__)
 
+def validation_errors_to_error_messages(validation_errors):
+  errorMessages = []
+  for field in validation_errors:
+    for error in validation_errors[field]:
+      errorMessages.append(f'{error}')
+  return errorMessages
 
 # _______________________________________GET ALL POSTS___________________________________________
 
@@ -69,7 +75,7 @@ def new_post():
         return {**new_post.to_dict()}
 
 
-    return form.errors
+    return {'errors': validation_errors_to_error_messages(form.errors)}
 
 
 # _______________________________________EDIT POST___________________________________________

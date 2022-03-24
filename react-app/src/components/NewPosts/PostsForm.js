@@ -8,7 +8,7 @@ const PostForm = ({ closeModal }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const [imageLoading, setImageLoading] = useState(false)
-    const [errors, setErrors] = useState([])
+    const [validationErrors, setValidationErrors] = useState([])
 
     const user_id = useSelector((state) => state?.session?.user?.id);
 
@@ -19,13 +19,14 @@ const PostForm = ({ closeModal }) => {
         e.preventDefault();
         const formData = new FormData();
 
-        formData.append('user_id', user_id)
-        formData.append('img_url', img_url)
-        formData.append('caption', caption)
+        formData.append('user_id', user_id);
+        formData.append('img_url', img_url);
+        formData.append('caption', caption);
 
         const newPost = await dispatch(createPost(formData));
+        if (newPost?.errors) return setValidationErrors(newPost?.errors);
+
         setImageLoading(false);
-        if (newPost?.errors) setErrors(newPost?.errors);
         if (newPost?.id) {
             history.push('/')
             return closeModal();
@@ -37,10 +38,16 @@ const PostForm = ({ closeModal }) => {
         setImg_url(file);
       }
 
+
     return (
         <div className='create-post-form'>
             <div className='form-name'><h2>Create Post</h2></div>
             <div className='post-form-container'>
+                <div className='errors'>
+                    {validationErrors?.length > 0 && validationErrors?.filter(error => error !== 'Invalid value').map(error => (
+                        <div key={error}>{error}</div>
+                    ))}
+                </div>
                 <form className='new-post-form' onSubmit={handleSubmit}>
                     <input
                         className='image-input'
@@ -48,6 +55,7 @@ const PostForm = ({ closeModal }) => {
                         accept='image/*'
                         placeholder='Imgage URL'
                         onChange={updateMedia_url}
+                        required
                     />
                     <input
                         className='caption-input'
