@@ -37,6 +37,7 @@ def new_post():
     form = PostForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
+
     url = 'no data provided'
     if type(form.data['img_url']) is not str:
         image = form.data['img_url']
@@ -47,10 +48,11 @@ def new_post():
         image.filename = get_unique_filename(image.filename)
         upload = upload_file_to_s3(image)
 
+        print('UPLOADUPLOADUPLOAD', upload)
+
         if 'url' not in upload:
             return upload, 400
         url = upload['url']
-
 
 
     if form.validate_on_submit():
