@@ -66,7 +66,7 @@ const SignUpForm = () => {
         <div>
           <p className='seperator'><span>OR</span></p>
         </div>
-        <form onSubmit={onSignUp}>
+        <form className='sign-up-form' onSubmit={onSignUp}>
           <div>
             {errors.map((error, ind) => (
               <div key={ind}>{error}</div>

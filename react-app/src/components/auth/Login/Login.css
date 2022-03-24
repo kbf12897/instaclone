@@ -30,7 +30,7 @@ html {
 
 .form-container {
     border: 1px solid rgba(var(--b6a,219,219,219),1);
-    height: 400px;
+    height: fit-content;
     margin-top: 20px;
     width: 350px;
     display: flex;

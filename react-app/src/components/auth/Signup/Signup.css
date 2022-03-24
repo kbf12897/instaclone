@@ -22,13 +22,14 @@
 }
 
 .signup-form-container {
-    height: 500px;
+    height: fit-content;
     width: 350px;
     border: 1px solid rgba(var(--b6a,219,219,219),1);
     margin-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 10px;
     background-color: white;
 }
 
@@ -78,6 +79,7 @@
     align-items: center;
     justify-content: center;
     background-color: white;
+    padding-right: 20px;
 }
 
 .login-link a {
@@ -87,4 +89,10 @@
     font-weight: 400;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
+}
+
+.sign-up-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
