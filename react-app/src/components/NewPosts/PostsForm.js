@@ -8,6 +8,7 @@ const PostForm = ({ closeModal }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const [imageLoading, setImageLoading] = useState(false)
+    const [errors, setErrors] = useState([])
 
     const user_id = useSelector((state) => state?.session?.user?.id);
 
@@ -16,15 +17,13 @@ const PostForm = ({ closeModal }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const formData = new FormData();
 
-        setImageLoading(true);
-        const payload = {
-            user_id,
-            img_url,
-            caption
-        }
+        formData.append('user_id', user_id)
+        formData.append('img_url', img_url)
+        formData.append('caption', caption)
 
-        const newPost = await dispatch(createPost(payload));
+        const newPost = await dispatch(createPost(formData));
         setImageLoading(false);
         if (newPost?.errors) setErrors(newPost?.errors);
         if (newPost?.id) {
@@ -35,7 +34,7 @@ const PostForm = ({ closeModal }) => {
 
     const updateMedia_url = (e) => {
         const file = e.target.files[ 0 ];
-        setMedia_url(file);
+        setImg_url(file);
       }
 
     return (
