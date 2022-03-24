@@ -7,7 +7,8 @@ import './Post.css';
 const PostForm = ({ closeModal }) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    // const [ error, setErrors ] = useState([]);
+    const [imageLoading, setImageLoading] = useState(false)
+    const [errors, setErrors] = useState([])
 
     const user_id = useSelector((state) => state?.session?.user?.id);
 
@@ -16,20 +17,25 @@ const PostForm = ({ closeModal }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const formData = new FormData();
 
-        const payload = {
-            user_id,
-            img_url,
-            caption
-        }
+        formData.append('user_id', user_id)
+        formData.append('img_url', img_url)
+        formData.append('caption', caption)
 
-        const newPost = await dispatch(createPost(payload));
-
-        if (newPost) {
-            closeModal();
-            return history.push('/');
+        const newPost = await dispatch(createPost(formData));
+        setImageLoading(false);
+        if (newPost?.errors) setErrors(newPost?.errors);
+        if (newPost?.id) {
+            history.push('/')
+            return closeModal();
         }
     }
+
+    const updateMedia_url = (e) => {
+        const file = e.target.files[ 0 ];
+        setImg_url(file);
+      }
 
     return (
         <div className='create-post-form'>
@@ -38,10 +44,10 @@ const PostForm = ({ closeModal }) => {
                 <form className='new-post-form' onSubmit={handleSubmit}>
                     <input
                         className='image-input'
-                        type='text'
+                        type='file'
+                        accept='image/*'
                         placeholder='Imgage URL'
-                        onChange={(e) => setImg_url(e.target.value)}
-                        required
+                        onChange={updateMedia_url}
                     />
                     <input
                         className='caption-input'

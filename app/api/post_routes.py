@@ -4,6 +4,7 @@ import psycopg2
 from app.models import Post, db
 from app.forms.post_form import PostForm
 from datetime import datetime
+from app.s3_helpers import (upload_file_to_s3, allowed_file, get_unique_filename)
 
 post_routes = Blueprint('posts', __name__)
 
@@ -36,10 +37,28 @@ def new_post():
     form = PostForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
+
+    url = 'no data provided'
+    if type(form.data['img_url']) is not str:
+        image = form.data['img_url']
+
+        if not allowed_file(image.filename):
+            return {'errors': 'file type no permitted'}, 400
+
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+
+        print('UPLOADUPLOADUPLOAD', upload)
+
+        if 'url' not in upload:
+            return upload, 400
+        url = upload['url']
+
+
     if form.validate_on_submit():
         new_post = Post(
             user_id = form.data['user_id'],
-            img_url = form.data['img_url'],
+            img_url = url,
             caption = form.data['caption'],
             created_at = datetime.now(),
             updated_at = datetime.now()
