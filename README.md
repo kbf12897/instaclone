@@ -80,7 +80,9 @@ If you click on a users username it will bring you to that users page.
 
 To add a comment on a post, enter your comment at the bottom of a posts card, once added you will be able to edit or delete that comment.
 
-## New Post![Screen Shot 2022-03-25 at 1 30 22 PM](https://user-images.githubusercontent.com/91348857/160171897-972c92e1-40d6-4![Screen Shot 2022-03-25 at 1 30 50 PM](https://user-images.githubusercontent.com/91348857/160171947-f0951dae-c70a-4cfb-bdfa-a40b8fe50c5f.png)
-6bc-9469-29b83d033459.png)
+## New Post ![Screen Shot 2022-03-25 at 1 30 22 PM](https://user-images.githubusercontent.com/91348857/160172026-658a8c90-9d3c-40a2-909f-b9a78099be90.png)
+
+## New Post Form![Screen Shot 2022-03-25 at 1 31 44 PM](https://user-images.githubusercontent.com/91348857/160172081-ae04c060-0a3f-454b-aa1e-5959b5113a60.png)
+
 
 To create a new post with s3 upload, click the + icon on the navbar and choose the file you would like to upload, users that create a post will be able to edit the caption of the post, but not the image. A user will also be able to delete their posts.
