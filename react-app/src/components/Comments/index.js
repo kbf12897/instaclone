@@ -1,8 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getComments } from '../../store/comment';
-import EditCommentForm from '../EditComments/EditCommentForm';
-import CommentMenu from '../EditComments/CommentMenu';
 import ViewComment from './ViewComment';
 import ViewPostModal from '../ViewPost/ViewPostModal';
 import './comments.css'

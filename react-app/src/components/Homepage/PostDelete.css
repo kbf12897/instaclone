@@ -12,7 +12,7 @@
     text-align: center;
     padding-top: 20px;
     padding-bottom: 20px;
-    border-bottom: 1px solid rgba(var(--b6a,219,219,219),1);
+    padding-bottom: 20px;
     cursor: pointer;
 }
 
@@ -31,4 +31,12 @@
 .user-page-link {
     text-decoration: none;
     color: black;
+}
+
+.delete-post-button, .user-page-link, .go-to-post {
+    border-bottom: 1px solid rgba(var(--b6a,219,219,219),1);
+}
+
+.cancel-delete-button {
+    padding-bottom: 20px;
 }

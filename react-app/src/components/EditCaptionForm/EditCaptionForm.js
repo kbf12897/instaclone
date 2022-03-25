@@ -7,6 +7,7 @@ import './EditCaption.css';
 const EditCaptionForm = ({ setShowEdit, post }) => {
     const dispatch = useDispatch();
     const [caption, setCaption] = useState(post?.caption)
+    const [errors, setErrors] = useState([])
     const postId = post?.id;
     const img_url = post?.img_url;
     const user_id = post?.user_id;
@@ -15,18 +16,23 @@ const EditCaptionForm = ({ setShowEdit, post }) => {
         e.preventDefault();
 
         setShowEdit(false)
-        return await dispatch(updatePost({ postId, user_id, img_url, caption }))
+        const updated = await dispatch(updatePost({ postId, user_id, img_url, caption }))
+        if (updated?.errors) return setErrors(updated?.errors)
+        return updated;
     }
+
 
     return (
         <div className='edit-caption-container'>
+            {caption?.length > 255 && <div>Caption must be 255 characters or less</div>}
             <form className='edit-caption-form' onSubmit={handleSubmit}>
                 <input
                     className='edit-caption-input'
                     type='text'
                     value={caption}
                     onChange={(e) => setCaption(e.target.value)}
-                />
+                    required
+                    />
                 <button className='submit-caption-edit' type='submit'>Edit</button>
             </form>
         </div>

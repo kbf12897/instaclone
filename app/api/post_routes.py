@@ -97,7 +97,7 @@ def edit_post(postId):
 
         return { **post.to_dict() }
 
-    return form.errors
+    return {'errors': validation_errors_to_error_messages(form.errors)}
 
 
 # _______________________________________DELETE POST___________________________________________
