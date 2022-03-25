@@ -24,7 +24,9 @@ const PostForm = ({ closeModal }) => {
         formData.append('caption', caption);
 
         const newPost = await dispatch(createPost(formData));
-        if (newPost?.errors) return setValidationErrors(newPost?.errors);
+        if (newPost?.errors) setValidationErrors(newPost?.errors);
+
+        if (caption.length > 255) setValidationErrors(['Caption must be 255 characters or less'])
 
         if (newPost?.id) {
             setImageLoading(false);
@@ -38,6 +40,7 @@ const PostForm = ({ closeModal }) => {
         const file = e.target.files[ 0 ];
         setImg_url(file);
       }
+
 
 
     return (

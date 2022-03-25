@@ -75,7 +75,7 @@ def new_post():
         return {**new_post.to_dict()}
 
 
-    return {'errors': validation_errors_to_error_messages(form.errors)}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
 # _______________________________________EDIT POST___________________________________________

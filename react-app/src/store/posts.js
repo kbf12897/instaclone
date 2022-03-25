@@ -63,13 +63,14 @@ export const createPost = (payload) => async (dispatch) => {
         method: 'POST',
         body: payload
     });
+    console.log('CREATEPOST', response)
 
     if (response.ok) {
         const newPost = await response.json();
+        console.log('STORE', newPost)
         dispatch(create(newPost));
         return newPost;
     };
-
     return response;
 };
 
