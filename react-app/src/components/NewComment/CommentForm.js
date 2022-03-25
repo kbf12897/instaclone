@@ -8,6 +8,7 @@ const CommentForm = ({ post }) => {
 
     const user_id = useSelector((state) => state?.session?.user?.id);
     const [comment_body, setComment_body] = useState('');
+    const [errors, setErrors] = useState([])
 
 
     const handleSubmit = async (e) => {
@@ -19,14 +20,24 @@ const CommentForm = ({ post }) => {
             comment_body
         }
 
-        setComment_body('')
-        await dispatch(createComment(payload));
+        if (comment_body.length > 255) {
+            return setErrors(['Comment must be 255 characters or less'])
+        }
+
+
+        const newComment = dispatch(createComment(payload));
+        if (newComment) {
+            setComment_body('');
+            setErrors([]);
+            return newComment;
+        }
     }
 
 
 
     return (
         <div className="comment-form-container">
+            {errors?.length > 0 && errors?.map((error) => <div key={error} className='comment-errors'>{error}</div>)}
             <form onSubmit={handleSubmit}>
                 <input
                     className="comment-input"

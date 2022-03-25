@@ -17,14 +17,22 @@ const EditCaptionForm = ({ setShowEdit, post }) => {
 
         setShowEdit(false)
         const updated = await dispatch(updatePost({ postId, user_id, img_url, caption }))
+        if (caption.length > 255) setErrors(['Caption must be 255 characters or less.'])
         if (updated?.errors) return setErrors(updated?.errors)
-        return updated;
+        console.log('ERRORSERRORS',errors)
+        if (updated) {
+            setErrors([])
+            return updated;
+        }
     }
 
 
     return (
         <div className='edit-caption-container'>
-            {/* {errors.length && errors.map((error) => <div>{error}</div>)} */}
+            {errors?.length > 0 && errors?.map((error) =>
+            <div>
+                <div>{error}</div>
+            </div>)}
             <form className='edit-caption-form' onSubmit={handleSubmit}>
                 <input
                     className='edit-caption-input'

@@ -30,3 +30,10 @@
     font-weight: 545;
     font-size: 15px;
 }
+
+.comment-errors {
+    font-size: 14px;
+    font-family: sans-serif;
+    color: red;
+    margin-left: 20px;
+}
