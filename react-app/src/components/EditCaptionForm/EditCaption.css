@@ -18,3 +18,9 @@
     font-size: 15px;
     cursor: pointer;
 }
+
+.edit-caption-errors {
+    color: red;
+    font-family: sans-serif;
+    font-size: 14px;
+}
