@@ -82,7 +82,11 @@ To add a comment on a post, enter your comment at the bottom of a posts card, on
 
 ## New Post ![Screen Shot 2022-03-25 at 1 30 22 PM](https://user-images.githubusercontent.com/91348857/160172026-658a8c90-9d3c-40a2-909f-b9a78099be90.png)
 
+To create a new post click the plus icon on the navigation bar which will bring up a modal form
+
 ## New Post Form![Screen Shot 2022-03-25 at 1 31 44 PM](https://user-images.githubusercontent.com/91348857/160172081-ae04c060-0a3f-454b-aa1e-5959b5113a60.png)
 
 
-To create a new post with s3 upload, click the + icon on the navbar and choose the file you would like to upload, users that create a post will be able to edit the caption of the post, but not the image. A user will also be able to delete their posts.
+To create a new post with s3 upload, choose the file you would like to upload, users that create a post will be able to edit the caption of the post, but not the image. A user will also be able to delete their posts.
+
+
