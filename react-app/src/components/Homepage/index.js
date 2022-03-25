@@ -53,7 +53,7 @@ const Homepage = () => {
                                     <img className='post-profile-img' src={post?.post_owner_profile_img} alt='profile-img' />
                                     <NavLink to={`/users/${post.user_id}`} className={'post-user'}>{post?.post_owner}</NavLink>
                                 </div>
-                                <PostDeleteModal post={post}/>
+                                {sessionUser?.id === post?.user_id && <PostDeleteModal post={post}/>}
                             </div>
                             <div className='img-container'>
                                 <img className='post-img' src={post?.img_url} alt={post?.caption} />

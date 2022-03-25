@@ -16,6 +16,7 @@ const PostDeleteModal = ({ post }) => {
         return history.push(`/`)
     }
 
+
     return (
         <>
             <div className='three-dots' onClick={e => setShowModal(true)}>
@@ -25,7 +26,6 @@ const PostDeleteModal = ({ post }) => {
                 <Modal onClose={() => setShowModal(false)}>
                     <div className='delete-post-container'>
                         {sessionUser.id === Number(post?.user_id) && <div className='delete-post-button' onClick={() => handleDelete(post?.id)}>Delete</div>}
-                        <NavLink to={`/users/${post.user_id}`} className='user-page-link'>User page</NavLink>
                         <div className='cancel-delete-button' onClick={() => setShowModal(false)}>Cancel</div>
                     </div>
                 </Modal>
