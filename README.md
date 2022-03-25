@@ -64,14 +64,23 @@ Javascript | Python | Node.js | Flask | React | Redux | SQLAlchemy | PostgreSQL 
 
 Existing users can log in to their account to view others posts or log in as a demo user
 
-## Signup page
+## Signup page![Screen Shot 2022-03-25 at 1 24 39 PM](https://user-images.githubusercontent.com/91348857/160171530-f7a31d30-9152-4ef9-a2d2-1320ab6374d5.png)
+
 New users can create an account which will redirect them to the sites main page.
 
-## Home page
+## Home page![Screen Shot 2022-03-25 at 1 24 51 PM](https://user-images.githubusercontent.com/91348857/160171560-5f168255-d851-498a-827d-dc3c01b2517e.png)
+
 The Instaclone main page shows all the posts from other users, you can explore others profile pages as well as your own from here.
+
+## User Page![Screen Shot 2022-03-25 at 1 25 23 PM](https://user-images.githubusercontent.com/91348857/160171640-4b0830d5-f3da-45c5-9dc0-15de3667b8d7.png)
 
 If you click on a users username it will bring you to that users page.
 
+## Add Comment![Screen Shot 2022-03-25 at 1 25 09 PM](https://user-images.githubusercontent.com/91348857/160171705-dc18ce12-b61d-4006-b66e-edf42bb07eff.png)
+
 To add a comment on a post, enter your comment at the bottom of a posts card, once added you will be able to edit or delete that comment.
+
+## New Post![Screen Shot 2022-03-25 at 1 30 22 PM](https://user-images.githubusercontent.com/91348857/160171897-972c92e1-40d6-4![Screen Shot 2022-03-25 at 1 30 50 PM](https://user-images.githubusercontent.com/91348857/160171947-f0951dae-c70a-4cfb-bdfa-a40b8fe50c5f.png)
+6bc-9469-29b83d033459.png)
 
 To create a new post with s3 upload, click the + icon on the navbar and choose the file you would like to upload, users that create a post will be able to edit the caption of the post, but not the image. A user will also be able to delete their posts.
