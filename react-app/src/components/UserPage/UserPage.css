@@ -32,6 +32,7 @@
 .user-page-img {
     height: 293px;
     width: 293px;
+    cursor: pointer;
 }
 
 .user-photos-container {

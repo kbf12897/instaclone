@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import ViewPostCommentMenu from "./ViewPostEditComment";
 import EditCommentForm from "../EditComments/EditCommentForm";
+import PostDeleteModal from "../Homepage/PostDelete";
+import CommentForm from "../NewComment/CommentForm";
 import ViewComment from "../Comments/ViewComment";
 import "./ViewPost.css";
 
@@ -23,17 +25,27 @@ function ViewPost({ post }) {
                     </div>
                     <div className="right-side-post">
                         <div className="top-right-side-post">
-                            <img className="modal-profile-img" src={post.post_owner_profile_img} alt='profile-pic' />
-                            <div className="modal-post-owner">{post?.post_owner}</div>
+                            <div className="profile-pic-and-img">
+                                <img className="modal-profile-img" src={post.post_owner_profile_img} alt='profile-pic' />
+                                <div className="modal-post-owner">{post?.post_owner}</div>
+                            </div>
+                            <PostDeleteModal post={post}/>
                         </div>
-                        <div className="modal-caption-and-owner">
-                            <div className="modal-caption-post-creator">{post?.post_owner}</div>
-                            <div className="modal-post-caption">{post?.caption}</div>
-                        </div>
-                        <div className="modal-comment-container">
-                        {postComments?.map((comment) => (
-                            <ViewComment comment={comment} />
-                        ))}
+                        <div className="caption-comments-container">
+                            <div>
+                                <div className="modal-caption-and-owner">
+                                    <div className="modal-caption-post-creator">{post?.post_owner}</div>
+                                    <div className="modal-post-caption">{post?.caption}</div>
+                                </div>
+                                <div className="modal-comment-container">
+                                {postComments?.map((comment) => (
+                                    <ViewComment comment={comment} />
+                                ))}
+                                </div>
+                            </div>
+                            <div className="view-post-add-comment">
+                                <CommentForm post={post}/>
+                            </div>
                         </div>
                     </div>
                 </div>

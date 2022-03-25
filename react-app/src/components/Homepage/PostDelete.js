@@ -2,16 +2,18 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import { deletePost } from '../../store/posts';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import './PostDelete.css';
 
 const PostDeleteModal = ({ post }) => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const sessionUser = useSelector((state) => state.session.user);
     const [showModal, setShowModal] = useState(false);
 
     const handleDelete = async (postId) => {
-        return await dispatch(deletePost(postId))
+        await dispatch(deletePost(postId))
+        return history.push(`/`)
     }
 
     return (
