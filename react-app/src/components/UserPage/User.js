@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import Post from './Post';
 import { getPosts } from '../../store/posts'
 import './UserPage.css'
 
@@ -43,13 +44,10 @@ function User() {
         </div>
       </div>
       <div className='user-photos-container'>
-        {orderedPosts.map((post) => (
-          <>
-            {post?.user_id === Number(userId) &&
-            <div className='grid'>
-              <img className='user-page-img' alt='user-posts' src={post?.img_url} />
-            </div>}
-          </>
+        {orderedPosts.map((post, i) => (
+          <div key={i}>
+            {post?.user_id === Number(userId) && <Post post={post}/>}
+          </div>
         ))}
       </div>
     </div>

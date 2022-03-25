@@ -13,6 +13,7 @@ function ViewPost({ post }) {
     const postComments = comments.filter(comment => comment?.post_id === postId);
 
 
+
     return (
         <>
             <div className="modal-post-container">
