@@ -24,7 +24,7 @@ const EditCaptionForm = ({ setShowEdit, post }) => {
 
     return (
         <div className='edit-caption-container'>
-            {caption?.length > 255 && <div>Caption must be 255 characters or less</div>}
+            {/* {errors.length && errors.map((error) => <div>{error}</div>)} */}
             <form className='edit-caption-form' onSubmit={handleSubmit}>
                 <input
                     className='edit-caption-input'

@@ -26,11 +26,12 @@ const PostForm = ({ closeModal }) => {
         const newPost = await dispatch(createPost(formData));
         if (newPost?.errors) return setValidationErrors(newPost?.errors);
 
-        setImageLoading(false);
         if (newPost?.id) {
+            setImageLoading(false);
             history.push('/')
             return closeModal();
         }
+        return 'Failed to Create'
     }
 
     const updateMedia_url = (e) => {
@@ -65,6 +66,7 @@ const PostForm = ({ closeModal }) => {
                     />
                     <button className='add-post-button' type='submit'>Upload</button>
                 </form>
+                {(imageLoading) && <p>Publishing...</p>}
             </div>
         </div>
     );
