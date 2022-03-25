@@ -103,7 +103,7 @@ To create a new post with s3 upload, choose the file you would like to upload, u
 ## Delete Post
 ![Screen Shot 2022-03-25 at 4 09 30 PM](https://user-images.githubusercontent.com/91348857/160194040-cdd03860-8d6c-40f0-9354-902eecc847a5.png)
 
-To delete a post you created click on the three dots at the top of the post, this will give the options to go to the user page, cancel and if you are the owner, delete the post
+To delete a post you created click on the three dots at the top of the post, this will open a modal giving you the options to delete or cancel. These three dots will only appear on posts you own.
 
 ## Edit caption of post
 ![Screen Shot 2022-03-25 at 4 11 13 PM](https://user-images.githubusercontent.com/91348857/160194225-43141593-812c-46c4-9d85-e660cb5a15be.png)
