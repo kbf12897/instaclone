@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import ViewPostCommentMenu from "./ViewPostEditComment";
-import EditCommentForm from "../EditComments/EditCommentForm";
+import EditCaptionForm from "../EditCaptionForm/EditCaptionForm";
 import PostDeleteModal from "../Homepage/PostDelete";
 import CommentForm from "../NewComment/CommentForm";
 import ViewComment from "../Comments/ViewComment";
@@ -13,8 +12,15 @@ function ViewPost({ post }) {
     const comments = Object.values(commentsObj);
     const postId = post?.id;
     const postComments = comments.filter(comment => comment?.post_id === postId);
+    const sessionUser = useSelector((state) => state.session.user)
+    const [showEdit, setShowEdit] = useState(false)
+    const [functionPostId, setFunctionPostId] = useState()
 
 
+    const setEditPost = (postId, bool) => {
+        setShowEdit(bool);
+        setFunctionPostId(postId)
+    }
 
     return (
         <>
@@ -34,8 +40,12 @@ function ViewPost({ post }) {
                         <div className="caption-comments-container">
                             <div>
                                 <div className="modal-caption-and-owner">
-                                    <div className="modal-caption-post-creator">{post?.post_owner}</div>
-                                    <div className="modal-post-caption">{post?.caption}</div>
+                                    <div className='caption-and-owner'>
+                                        {post.caption && <div className='caption-post-creator'>{post?.post_owner}</div>}
+                                        {!showEdit && <div className='post-caption'>{post?.caption}</div>}
+                                        {(showEdit && post?.id === postId) && <EditCaptionForm post={post} setShowEdit={setShowEdit}/>}
+                                    </div>
+                                    {sessionUser?.id === Number(post?.user_id) && <div className='caption-three-dots' onClick={() => setEditPost(post?.id, !showEdit)}><svg aria-label="More options" className="_8-yf5 " color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg></div>}
                                 </div>
                                 <div className="modal-comment-container">
                                 {postComments?.map((comment) => (

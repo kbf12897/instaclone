@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import Post from './Post';
 import { getPosts } from '../../store/posts'
 import './UserPage.css'
@@ -12,6 +12,7 @@ function User() {
   const postsObj = useSelector((state) => state?.postReducer);
   const posts = postsObj && Object.values(postsObj);
   const orderedPosts = posts.reverse();
+
 
 
   useEffect(() => {
