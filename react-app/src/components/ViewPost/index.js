@@ -35,7 +35,7 @@ function ViewPost({ post }) {
                                 <img className="modal-profile-img" src={post.post_owner_profile_img} alt='profile-pic' />
                                 <div className="modal-post-owner">{post?.post_owner}</div>
                             </div>
-                            <PostDeleteModal post={post}/>
+                            {post.user_id === sessionUser.id && <PostDeleteModal post={post}/>}
                         </div>
                         <div className="caption-comments-container">
                             <div>
