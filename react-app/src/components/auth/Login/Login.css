@@ -104,7 +104,7 @@ html {
 }
 
 .sign-up-link {
-    margin-top: 40px;
+    margin-top: 20px;
     border: 1px solid rgba(var(--b6a,219,219,219),1);
     min-height: 70px;
     width: 350px;

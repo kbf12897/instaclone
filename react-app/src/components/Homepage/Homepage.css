@@ -93,9 +93,6 @@
     align-items: center;
     justify-content: space-between;
     width: 590px;
-    border-bottom: 1px solid rgba(var(--b6a,219,219,219),1);
-    padding-bottom: 10px;
-    padding-left: 10px;
     height: 30px;
     margin-top: 10px;
 }

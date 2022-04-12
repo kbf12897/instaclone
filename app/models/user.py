@@ -1,7 +1,7 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from .follows_table import follows
+from .follows_table import followers
 from .post_model import Post
 
 class User(db.Model, UserMixin):
@@ -14,12 +14,12 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     # many to many users to users
-    followers = db.relationship(
+    followed = db.relationship(
         "User",
-        secondary=follows,
-        primaryjoin=(follows.c.follower_id == id),
-        secondaryjoin=(follows.c.followed_id == id),
-        backref=db.backref('following', lazy='dynamic'),
+        secondary=followers,
+        primaryjoin=(followers.c.follower_id == id),
+        secondaryjoin=(followers.c.followed_id == id),
+        backref=db.backref('followers', lazy='dynamic'),
         lazy='dynamic'
     )
 
@@ -40,7 +40,7 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def is_following(self, user):
-        return self.followers.filter(follows.c.followed_id == user.id).count() > 0
+        return self.followers.filter(followers.c.followed_id == user.id).count() > 0
 
     def follow(self, user):
         if not self.is_following(user):
@@ -52,8 +52,8 @@ class User(db.Model, UserMixin):
 
     def followed_posts(self):
         followed = Post.query.join(
-            follows, (follows.c.followed_id == Post.user_id)).filter(
-                follows.c.follower_id == self.id)
+            followers, (followers.c.followed_id == Post.user_id)).filter(
+                followers.c.follower_id == self.id)
 
         own = Post.query.filter_by(user_id=self.id)
         return followed.union(own).order_by(Post.created_at.desc())
