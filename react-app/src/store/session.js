@@ -1,6 +1,8 @@
 // constants
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
+const UNFOLLOW = 'follow/UNFOLLOW';
+const FOLLOW = 'follow/FOLLOW';
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -10,6 +12,21 @@ const setUser = (user) => ({
 const removeUser = () => ({
   type: REMOVE_USER,
 })
+
+export const unfollow = (userId) => {
+  return {
+    type: UNFOLLOW,
+    userId
+  }
+}
+
+export const follow = (user) => {
+  return {
+    type: FOLLOW,
+    user
+  }
+}
+
 
 const initialState = { user: null };
 
@@ -24,7 +41,7 @@ export const authenticate = () => async (dispatch) => {
     if (data.errors) {
       return;
     }
-  
+
     dispatch(setUser(data));
   }
 }
@@ -40,8 +57,8 @@ export const login = (email, password) => async (dispatch) => {
       password
     })
   });
-  
-  
+
+
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))
@@ -82,7 +99,7 @@ export const signUp = (username, email, password) => async (dispatch) => {
       password,
     }),
   });
-  
+
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))
@@ -98,11 +115,26 @@ export const signUp = (username, email, password) => async (dispatch) => {
 }
 
 export default function reducer(state = initialState, action) {
+  let newState;
   switch (action.type) {
     case SET_USER:
       return { user: action.payload }
+
     case REMOVE_USER:
       return { user: null }
+
+    case UNFOLLOW:
+      newState = {...state};
+      let userToUnfollow = action.userId;
+      const index = newState.user.follwoing.findIndex(user => user.id === userToUnfollow)
+      newState.user.following.splice(index, 1);
+      return newState;
+
+    case FOLLOW:
+      newState = {...state};
+      newState.user.follwoing.push(action.user);
+      return newState;
+
     default:
       return state;
   }
