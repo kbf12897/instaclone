@@ -1,5 +1,6 @@
 from app.models.db import db
 from datetime import datetime
+from .user import User
 
 class Post(db.Model):
     __tablename__ = 'posts'
@@ -15,6 +16,17 @@ class Post(db.Model):
     # one to many with users, comments, likes
     users = db.relationship('User', back_populates='posts')
     comments = db.relationship('Comment', back_populates='posts', cascade='all, delete')
+
+
+    @staticmethod
+    def get_posts_by_following(current_user_id):
+        current_user = User.query.get(current_user_id)
+        following = current_user.following
+        following_ids = [user.id for user in following]
+        posts = Post.query.filter(Post.user_id.in_(following_ids)).all()
+
+        return [post.to_dict() for post in posts]
+
 
     def to_dict(self):
         return {
