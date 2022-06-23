@@ -1,7 +1,7 @@
 from app.models.db import db
 
-followers = db.Table(
-    'followers',
-    db.Column('follower_id', db.Integer, db.ForeignKey('users.id')),
-    db.Column('followed_id', db.Integer, db.ForeignKey('users.id'))
+follows = db.Table(
+    'follows',
+    db.Column('follower_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+    db.Column('followed_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
 )

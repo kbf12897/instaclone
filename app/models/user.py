@@ -1,7 +1,7 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from .follows_table import followers
+from .follows_table import follows
 from .post_model import Post
 
 class User(db.Model, UserMixin):
@@ -14,12 +14,12 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     # many to many users to users
-    followed = db.relationship(
+    followers = db.relationship(
         "User",
-        secondary=followers,
-        primaryjoin=(followers.c.follower_id == id),
-        secondaryjoin=(followers.c.followed_id == id),
-        backref=db.backref('followers', lazy='dynamic'),
+        secondary=follows,
+        primaryjoin=(follows.c.followed_id == id),
+        secondaryjoin=(follows.c.follower_id == id),
+        backref=db.backref('following', lazy='dynamic'),
         lazy='dynamic'
     )
 
@@ -39,25 +39,11 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
-    def is_following(self, user):
-        return self.followers.filter(followers.c.followed_id == user.id).count() > 0
-
-    def follow(self, user):
-        if not self.is_following(user):
-            self.followers.append(user)
-
-    def unfollow(self, user):
-        if self.is_following(user):
-            self.followers.remove(user)
-
-    def followed_posts(self):
-        followed = Post.query.join(
-            followers, (followers.c.followed_id == Post.user_id)).filter(
-                followers.c.follower_id == self.id)
-
-        own = Post.query.filter_by(user_id=self.id)
-        return followed.union(own).order_by(Post.created_at.desc())
-
+    def f_to_dict(self):
+        return {
+            'id': self.id,
+            'username': self.username
+        }
 
     def to_dict(self):
         return {
@@ -65,4 +51,6 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'profile_img': self.profile_img,
             'email': self.email,
+            'following': [user.f_to_dict() for user in self.following],
+            'followers': [user.f_to_dict() for user in self.followers]
         }
